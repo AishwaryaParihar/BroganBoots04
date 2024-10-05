@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import logo from "../../assets/logo.jpg"
-import {Link} from "react-router-dom";
+import logo from "../../assets/logo.jpg";
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -11,35 +12,10 @@ const Navbar = () => {
   return (
     <nav className="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        {/* Left section with the logo */}
         <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src={logo} className="h-8" alt=" Logo" />
-          
         </Link>
-
-        {/* Search box */}
-        <div className="hidden md:block relative">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="p-2 pl-4 pr-10 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <button className="absolute right-2 top-2 text-gray-500 dark:text-gray-300">
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M21 21l-4.35-4.35M15 11a4 4 0 11-8 0 4 4 0 018 0z"
-              ></path>
-            </svg>
-          </button>
-        </div>
 
         {/* Hamburger button - Visible on small screens */}
         <button
@@ -100,8 +76,32 @@ const Navbar = () => {
                 Contact us
               </Link>
             </li>
-           
           </ul>
+        </div>
+
+        {/* Search box - Always visible on large screens */}
+        <div className="hidden md:block relative">
+          <input
+            type="text"
+            placeholder="Search..."
+            className="p-2 pl-4 pr-10 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <button className="absolute right-2 top-2 text-gray-500 dark:text-gray-300">
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M21 21l-4.35-4.35M15 11a4 4 0 11-8 0 4 4 0 018 0z"
+              ></path>
+            </svg>
+          </button>
         </div>
       </div>
     </nav>
