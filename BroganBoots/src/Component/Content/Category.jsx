@@ -38,7 +38,7 @@ const Category = () => {
   return (
     <div className="container-fluid p-0  m-0">
       <div className="">
-        <div className="bg-gray-200 mt-5 flex justify-center py-6">
+        <div className="bg-gray-200 flex justify-center py-2">
           {loading && <p className="text-lg font-semibold">Loading...</p>}
           {!loading && (
             <div className="flex overflow-x-auto space-x-4">
@@ -64,9 +64,9 @@ const Category = () => {
               <div className="border w-40 flex-shrink-0">
                 <Link className="text-decoration-none text-center block" to={`/product-category?${allCategoriesquarry}`}>
                   <div className="category-img-box">
-                    <img src={allCategory} alt="" className="w-full h-32 object-cover" />
+                    <img src={allCategory} alt="" className="w-40 h-40 object-cover rounded-full" />
                   </div>
-                  <div className="py-2 text-capitalize text-lg">All categories</div>
+                  <div className="pt-2 text-capitalize text-lg">All categories</div>
                 </Link>
               </div>
             </div>
