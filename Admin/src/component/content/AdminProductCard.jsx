@@ -6,26 +6,23 @@ const AdminProductCard = ({ data, fetchdata }) => {
   const [editProduct, setEditProduct] = useState(false);
 
   return (
-    <div className="admin-product-card  bg-light p-2">
+    <div className="bg-gray-100 p-4 rounded shadow-md">
       <div className="text-center">
         <img
-          className="adminProductCardImage"
+          className="w-36 h-36 object-cover mx-auto"
           src={data?.productImage[0]}
-          width={150}
-          height={150}
           alt=""
         />
-        <h6 className="mt-1 adminProductHeading">{data?.productName}</h6>
-        <div className="">
-          <p className="fw-bold">
-            {
-              displayINRCurrency(data.sellingPrice)
-
-            }
-          
+        <h6 className="mt-2 text-lg font-semibold">{data?.productName}</h6>
+        <div>
+          <p className="font-bold text-xl">
+            {displayINRCurrency(data.sellingPrice)}
           </p>
-          <div className="editAdminButton text-end" >
-            <i class="fa-solid fa-pen bg-success p-2  rounded-circle text-white pointerClass" onClick={() => setEditProduct(true)}></i>
+          <div className="text-end">
+            <i
+              className="fas fa-pen bg-green-500 p-2 rounded-full text-white cursor-pointer"
+              onClick={() => setEditProduct(true)}
+            ></i>
           </div>
         </div>
       </div>

@@ -1,12 +1,18 @@
 import React from "react";
 
-const productSize = ({ size, handleProductSize }) => {
+const ProductSize = ({ size, handleProductSize }) => {
   return (
-    <div className="d-flex gap-2 border-2 border-red-800">
-      <label htmlFor={size}>{size}</label>
-      <input type="checkbox" name="" id={size} value={size} onChange={handleProductSize} />
+    <div className="flex gap-2 border-2 border-red-800 p-2">
+      <label htmlFor={size} className="font-medium">{size}</label>
+      <input
+        type="checkbox"
+        id={size}
+        value={size}
+        onChange={handleProductSize}
+        className="form-checkbox h-5 w-5 text-green-600"
+      />
     </div>
   );
 };
 
-export default productSize;
+export default ProductSize;

@@ -3,13 +3,6 @@ import { UploadProduct } from "./UploadProduct";
 import SummaryApi from "../../common/index";
 import AdminProductCard from "./AdminProductCard";
 
-// import Card from "react-bootstrap/Card";
-
-// import Badge from "react-bootstrap/Badge";
-// import { AdminProductCard } from "./AdminProductCard";
-
-
-
 function Products() {
   const [openUploadProduct, setOpenUploadProduct] = useState(false);
   const [allProduct, setAllProduct] = useState([]);
@@ -18,43 +11,38 @@ function Products() {
     const response = await fetch(SummaryApi.allProduct.url);
     const dataResponse = await response.json();
 
-   console.log('product',dataResponse)
+    console.log('product', dataResponse);
 
     setAllProduct(dataResponse?.data || []);
   };
+
   useEffect(() => {
     fetchAllProduct();
   }, []);
+
   return (
     <>
-      <div className="bg-white shadow d-flex justify-content-between align-items-center p-3 mt-2">
-        <h2 className="fw-bolder ps-3">Product</h2>
+      <div className="bg-white shadow-md flex justify-between items-center p-4 mt-2">
+        <h2 className="font-bold ps-3">Product</h2>
         <button
-          className="btn bg-success text-white fw-bolder rounded-5"
+          className="bg-green-500 text-black font-bold rounded-lg px-4 py-2"
           onClick={() => setOpenUploadProduct(true)}
         >
           Upload Products
         </button>
       </div>
 
-
-      <div className="d-flex gap-3 align-items-center  flex-wrap all-product-box scrollbar-none m-3">
+      <div className="flex gap-3 items-center flex-wrap m-3">
         {
-          allProduct.map((product,index)=> {
-            return(
-              <AdminProductCard  data={product} key={index+"allProduct"} fetchdata={fetchAllProduct}/>
- 
-            )
-          })
+          allProduct.map((product, index) => (
+            <AdminProductCard data={product} key={index + "allProduct"} fetchdata={fetchAllProduct} />
+          ))
         }
       </div>
 
-
-
-
       {/* upload product component */}
       {openUploadProduct && (
-        <UploadProduct onClose={() => setOpenUploadProduct(false)}  fetchData={fetchAllProduct}/>
+        <UploadProduct onClose={() => setOpenUploadProduct(false)} fetchData={fetchAllProduct} />
       )}
     </>
   );

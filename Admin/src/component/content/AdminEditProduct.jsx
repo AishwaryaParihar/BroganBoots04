@@ -30,7 +30,6 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
   });
 
   const [openFullScreenImage, setOpenFullScreenImage] = useState(false);
-
   const [fullScreenImage, setFullScreenImage] = useState("");
 
   const handleOnChange = (e) => {
@@ -44,9 +43,7 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
   };
 
   const handleSize = (e) => {
-    const { name, value } = e.target;
-
-    console.log(name);
+    const { name } = e.target;
 
     setShowSize((prev) => {
       return prev.map((size) => {
@@ -71,8 +68,6 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
   };
 
   const handleDeleteProductImage = async (index) => {
-    console.log("imageIndex", index);
-
     const newProductImage = [...data.productImage];
     newProductImage.splice(index, 1);
     setData((preve) => {
@@ -83,14 +78,11 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
     });
   };
 
-  //  upload product
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const filteredSizes = showSize
       ?.filter((size) => size.selected)
       .map((size) => size.size);
-    console.log(filteredSizes);
     setData((prev) => {
       return {
         ...prev,
@@ -118,76 +110,68 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
       toast.error(responseData?.message);
     }
   };
+
   return (
-    <div className="position-fixed   uploadopacity top-0 start-0 bottom-0 end-0 d-flex justify-content-center align-items-center ">
-      <div className=" p-3 rounded uplaod-product">
-        <div className=" d-flex justify-content-between">
-          <h3 className="fw-bold ">Edit Product</h3>
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="p-6 bg-white rounded shadow-md w-full max-w-md">
+        <div className="flex justify-between">
+          <h3 className="font-bold text-xl">Edit Product</h3>
           <i
-            className="fa-solid fa-xmark fs-3 pointerClass"
+            className="fas fa-times cursor-pointer text-2xl"
             onClick={onClose}
           ></i>
         </div>
-        <form
-          action=""
-          className="row p-4 gap-2 fw-bolder pb-4"
-          onSubmit={handleSubmit}
-        >
-          <label className="" htmlFor="productName">
-            {" "}
-            Product Name :
-          </label>
+        <form className="mt-4 space-y-4" onSubmit={handleSubmit}>
+          <label htmlFor="productName">Product Name:</label>
           <input
             type="text"
             id="productName"
-            placeholder="Enter Product  Name"
+            placeholder="Enter Product Name"
             name="productName"
             value={data.productName}
             onChange={handleOnChange}
-            className="p-2 m-2 rounded-3 bg-light border border-light upload-product-inputs"
+            className="w-full p-2 border rounded bg-gray-100"
             required
           />
 
-          <label htmlFor="brandName"> Brand Name :</label>
+          <label htmlFor="brandName">Brand Name:</label>
           <input
             type="text"
             id="brandName"
-            placeholder="Enter Brand  Name"
+            placeholder="Enter Brand Name"
             name="brandName"
             value={data.brandName}
             onChange={handleOnChange}
-            className="p-2 m-2 rounded-3 bg-light border border-light"
+            className="w-full p-2 border rounded bg-gray-100"
             required
           />
 
-          <label htmlFor="category"> Category</label>
+          <label htmlFor="category">Category:</label>
           <select
             required
             onChange={handleOnChange}
             name="category"
             id="category"
             value={data.category}
-            className="p-2 m-2 rounded-3 bg-light border border-light"
+            className="w-full p-2 border rounded bg-gray-100"
           >
             <option value={""}>Select Category</option>
-
-            {ProductCategory.map((el, index) => {
-              return (
-                <option value={el.value} key={el.value + index}>
-                  {el.label}
-                </option>
-              );
-            })}
+            {ProductCategory.map((el, index) => (
+              <option value={el.value} key={el.value + index}>
+                {el.label}
+              </option>
+            ))}
           </select>
 
-          <div className="">
-            <label htmlFor="">Available Sizes</label>
-
-            <div className="">
+          <div>
+            <label>Available Sizes:</label>
+            <div className="flex flex-wrap gap-2">
               {showSize.length !== 0 &&
                 showSize?.map((size) => (
-                  <div className="d-flex gap-2 border-2 border-red-800">
-                    <label htmlFor={size.size}>{size.size}</label>
+                  <div key={size.size} className="flex items-center">
+                    <label htmlFor={size.size} className="mr-2">
+                      {size.size}
+                    </label>
                     <input
                       type="checkbox"
                       name={size.size}
@@ -195,65 +179,57 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
                       value={size.size}
                       checked={size.selected}
                       onChange={handleSize}
+                      className="form-checkbox h-5 w-5"
                     />
                   </div>
                 ))}
             </div>
           </div>
 
-          <label htmlFor="productImage"> Product Image :</label>
+          <label htmlFor="productImage">Product Image:</label>
           <label htmlFor="uploadImageInput">
-            <div className=" bg-light rounded input-img d-flex justify-content-center align-items-center pointerClass">
-              <div className="text-center">
-                <i class="fa-solid fa-cloud-arrow-up fa-2xl text-secondary"></i>
-                <p className="fw-normal text-secondary pt-2">
-                  {" "}
-                  Upload Product Image
-                </p>
-                <input
-                  className="d-none"
-                  type="file"
-                  id="uploadImageInput"
-                  onChange={handleUploadProduct}
-                />
-              </div>
+            <div className="bg-gray-100 rounded flex flex-col items-center cursor-pointer">
+              <i className="fas fa-cloud-upload-alt text-3xl text-gray-600"></i>
+              <p className="text-gray-600">Upload Product Image</p>
+              <input
+                className="hidden"
+                type="file"
+                id="uploadImageInput"
+                onChange={handleUploadProduct}
+              />
             </div>
           </label>
-          <div className="">
+          <div>
             {data?.productImage[0] ? (
-              <div className="d-flex flex-wrap align-items-center gap-2">
-                {data.productImage.map((el, index) => {
-                  return (
-                    <div className="position-relative small-img-box ">
-                      <img
-                        src={el}
-                        alt={el}
-                        width={103.5}
-                        height={103.5}
-                        className="bg-light border pointerClass"
-                        onClick={() => {
-                          setOpenFullScreenImage(true);
-                          setFullScreenImage(el);
-                        }}
-                      />
-                      <div
-                        className="pointerClass position-absolute bottom-0 end-0 p-1 px-2 bg-danger text-white rounded-5 delete-icon"
-                        onClick={() => handleDeleteProductImage(index)}
-                      >
-                        <i class="fa-solid fa-trash"></i>
-                      </div>
+              <div className="flex flex-wrap gap-2">
+                {data.productImage.map((el, index) => (
+                  <div key={index} className="relative">
+                    <img
+                      src={el}
+                      alt={el}
+                      width={104}
+                      height={104}
+                      className="bg-gray-100 border cursor-pointer"
+                      onClick={() => {
+                        setOpenFullScreenImage(true);
+                        setFullScreenImage(el);
+                      }}
+                    />
+                    <div
+                      className="absolute bottom-0 right-0 p-1 bg-red-600 text-white rounded cursor-pointer"
+                      onClick={() => handleDeleteProductImage(index)}
+                    >
+                      <i className="fas fa-trash"></i>
                     </div>
-                  );
-                })}
+                  </div>
+                ))}
               </div>
             ) : (
-              <p className="text-success fw-normal ">
-                *Please Upload product image
-              </p>
+              <p className="text-green-600">*Please Upload product image</p>
             )}
           </div>
 
-          <label htmlFor="price"> Price :</label>
+          <label htmlFor="price">Price:</label>
           <input
             type="number"
             id="price"
@@ -261,11 +237,11 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
             name="price"
             value={data.price}
             onChange={handleOnChange}
-            className="p-2 m-2 rounded-3 bg-light border border-light"
+            className="w-full p-2 border rounded bg-gray-100"
             required
           />
 
-          <label htmlFor="sellingPrice"> Selling Price :</label>
+          <label htmlFor="sellingPrice">Selling Price:</label>
           <input
             type="number"
             id="sellingPrice"
@@ -273,27 +249,26 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
             name="sellingPrice"
             value={data.sellingPrice}
             onChange={handleOnChange}
-            className="p-2 m-2 rounded-3 bg-light border border-light"
+            className="w-full p-2 border rounded bg-gray-100"
             required
           />
 
-          <label htmlFor="description"> Description :</label>
+          <label htmlFor="description">Description:</label>
           <textarea
-            type="text"
             id="description"
             placeholder="Enter Product Description"
             name="description"
             value={data.description}
             onChange={handleOnChange}
             rows={4}
-            className="p-2 m-2 rounded-3 bg-light border border-light "
+            className="w-full p-2 border rounded bg-gray-100"
           />
 
-          <button className="btn btn-success ms-2">update Product</button>
+          <button className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-500">
+            Update Product
+          </button>
         </form>
       </div>
-
-      {/* display image full screen */}
 
       {openFullScreenImage && (
         <DisplayImage
