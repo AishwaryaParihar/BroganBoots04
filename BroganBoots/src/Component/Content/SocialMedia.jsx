@@ -1,32 +1,25 @@
 import React from 'react';
+import { FaFacebook, FaPinterest, FaWhatsapp } from 'react-icons/fa';
+import { AiOutlineMail } from 'react-icons/ai';
+import { BsTwitter } from 'react-icons/bs';
 
 const SocialMedia = () => {
   return (
     <div className="social-media-link flex justify-between mt-4">
-      <a href="#" className="text-gray-700 hover:text-gray-900">
-        <span>
-          <i className="fa-brands fa-facebook"></i> Share
-        </span>
+      <a href="#" className="text-gray-700 hover:text-gray-900 flex items-center">
+        <FaFacebook className="mr-2" /> Share
       </a>
-      <a href="#" className="text-gray-700 hover:text-gray-900">
-        <span>
-          <i className="fa-brands fa-x-twitter"></i> Tweet
-        </span>
+      <a href="#" className="text-gray-700 hover:text-gray-900 flex items-center">
+        <BsTwitter className="mr-2" /> Tweet
       </a>
-      <a href="#" className="text-gray-700 hover:text-gray-900">
-        <span>
-          <i className="fa-brands fa-pinterest"></i> Pin it
-        </span>
+      <a href="#" className="text-gray-700 hover:text-gray-900 flex items-center">
+        <FaPinterest className="mr-2" /> Pin it
       </a>
-      <a href="#" className="text-gray-700 hover:text-gray-900">
-        <span>
-          <i className="fa-solid fa-envelope"></i> Mail
-        </span>
+      <a href="#" className="text-gray-700 hover:text-gray-900 flex items-center">
+        <AiOutlineMail className="mr-2" /> Mail
       </a>
-      <a href="#" className="text-gray-700 hover:text-gray-900">
-        <span>
-          <i className="fa-brands fa-whatsapp"></i> Whatsapp
-        </span>
+      <a href="#" className="text-gray-700 hover:text-gray-900 flex items-center">
+        <FaWhatsapp className="mr-2" /> Whatsapp
       </a>
     </div>
   );
