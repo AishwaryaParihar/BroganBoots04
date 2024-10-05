@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+.slick-prev,
+.slick-next {
+  font-size: 50px; /* Size of the arrows */
+  color: gray; /* Color of the arrows */
+  z-index: 1; /* Ensure arrows are above other elements */
+}
+
+.slick-prev {
+  left: 10px; /* Position of the previous arrow */
+}
+
+.slick-next {
+  right: 10px; /* Position of the next arrow */
+}
