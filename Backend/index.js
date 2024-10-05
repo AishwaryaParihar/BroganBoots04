@@ -15,7 +15,7 @@ app.use(
 app.get ('/',(req,res)=>{
     res.status(200).send('this is root')
 })
-
+app.use(express.json());
 app.use("/api", router);
 const PORT = 5055;
 
@@ -28,7 +28,7 @@ connectDB()
     })
 })
 .catch((err)=>{
-    console.log(err.massage)
+    console.log(err.message)
 })
 
 // connectDB()
