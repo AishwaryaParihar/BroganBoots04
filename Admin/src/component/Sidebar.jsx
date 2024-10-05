@@ -1,31 +1,33 @@
 import React from 'react';
-// import { Link, Outlet } from 'react-router-dom';
-
 import { Link, Outlet } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
-    <>
-      <div className="flex justify-between">
-        <div className="">
+    <div className="flex h-screen">
+      {/* Sidebar */}
+      <aside className="w-64 p-4 bg-gray-200 border-r border-gray-300 shadow-md">
+        <nav>
+          <h2 className="text-xl font-semibold mb-4 text-gray-800">Menu</h2>
           <Link
             to={'product'}
-            className="px-2 py-1 hover:bg-slate-100 hover:text-black hover:font-semibold"
+            className="block px-4 py-2 mb-2 text-gray-700 rounded-md hover:bg-blue-500 hover:text-white transition duration-300"
           >
-            product
+            Product
           </Link>
           <Link
             to={'contact'}
-            className="px-2 py-1 hover:bg-slate-100 hover:text-black hover:font-semibold"
+            className="block px-4 py-2 text-gray-700 rounded-md hover:bg-blue-500 hover:text-white transition duration-300"
           >
-            contact
+            Contact
           </Link>
-        </div>
-        <div className="">
-          |<Outlet />
-        </div>
-      </div>
-    </>
+        </nav>
+      </aside>
+
+      {/* Main Content */}
+      <main className="flex-grow p-6 bg-white">
+        <Outlet />
+      </main>
+    </div>
   );
 };
 
