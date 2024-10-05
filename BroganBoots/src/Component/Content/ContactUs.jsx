@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Map from "./Map";
 import { toast } from "react-toastify";
 
+
 const ContactUs = () => {
   const [data, setData] = useState({
     name: "",
@@ -20,22 +21,39 @@ const ContactUs = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const contactResponse = await fetch(SummaryApi.contactus.url, {
-      method: SummaryApi.contactus.method,
-      headers: {
-        "content-type": "application/json"
-      },
-      body: JSON.stringify(data)
-    });
-    const dataApi = await contactResponse.json();
-
-    if (dataApi.success) {
-      toast.success(dataApi.message);
-    }
-    if (dataApi.error) {
-      toast.error(dataApi.message);
+    console.log(data);
+    try {
+      const contactResponse = await fetch("http://localhost:5055/api/contactusController", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+  
+      if (!contactResponse.ok) {
+        throw new Error("Network response was not ok");
+      }
+  
+      const dataApi = await contactResponse.json();
+  
+      if (dataApi.success) {
+        toast.success(dataApi.message);
+        setData({
+          name: "",
+          mobile: "",
+          email: "",
+          msg: "",
+        });
+      } else {
+        toast.error(dataApi.message || "An error occurred");
+      }
+    } catch (error) {
+      console.error("Error submitting the form:", error);
+      toast.error("Failed to submit the form. Please try again later.");
     }
   };
+  
 
   return (
     <div className="py-10">
@@ -47,12 +65,11 @@ const ContactUs = () => {
         </div>
 
         <div className="flex flex-col lg:flex-row justify-between items-start space-y-8 lg:space-y-0 lg:space-x-8">
-          {/* Contact Info */}
-          <div className="lg:w-1/2 space-y-8 text-left"> {/* Aligned text to left */}
+          <div className="lg:w-1/2 space-y-8 text-left">
             <h2 className="text-3xl font-semibold text-gray-800">
               Keep in <span className="text-primary">Touch</span>
             </h2>
-            <p className="  ">
+            <p>
               Give us a call or drop by anytime, we endeavour to answer all
               enquiries within 24 hours on business days. We will be happy
               to answer your questions.
@@ -61,7 +78,7 @@ const ContactUs = () => {
             <div className="space-y-4">
               <div>
                 <h4 className="font-semibold text-gray-700">ADDRESS</h4>
-                <p className="  ">
+                <p>
                   <i className="fas fa-map-marker-alt"></i> 63-B, Pocket-B, DDA Flats, 
                   Hari Nagar, Near Tilak Nagar Metro Station, New Delhi – 110064
                 </p>
@@ -69,14 +86,14 @@ const ContactUs = () => {
 
               <div>
                 <h4 className="font-semibold text-gray-700">CONTACT</h4>
-                <p className="  ">
+                <p>
                   <i className="fas fa-phone"></i> +91 76111 89837
                 </p>
               </div>
 
               <div>
                 <h4 className="font-semibold text-gray-700">EMAIL</h4>
-                <p className="  ">
+                <p>
                   <i className="fas fa-envelope"></i> 
                   <a href="mailto:broganboots19@gmail.com" className="text-primary underline">broganboots19@gmail.com</a>
                 </p>
@@ -84,8 +101,7 @@ const ContactUs = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="lg:w-1/2 bg-white p-8 shadow-md rounded-md text-left"> {/* Aligned text to left */}
+          <div className="lg:w-1/2 bg-white p-8 shadow-md rounded-md text-left">
             <h2 className="text-3xl font-semibold text-gray-800 mb-6">
               Send a <span className="text-primary">Message</span>
             </h2>
@@ -136,7 +152,7 @@ const ContactUs = () => {
                   ></textarea>
                 </div>
                 <div className="form-group col-span-2 text-center">
-                  <button type="submit" className="bg-primary text-white py-3 px-6 rounded-md hover:bg-primary-dark transition">
+                  <button type="submit" className="bg-blue-500 text-white py-3 px-6 rounded-md hover:bg-primary-dark transition">
                     Submit
                   </button>
                 </div>

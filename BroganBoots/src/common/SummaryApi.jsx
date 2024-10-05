@@ -10,6 +10,10 @@ const SummaryApi = {
         url : `${backendDomin}/api/category`,
         method : "get"
       },
+      createContact : {
+        url : `${backendDomin}/api/createContact`,
+        method : "post"
+      },
 }
 
 
