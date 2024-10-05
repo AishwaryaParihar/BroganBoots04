@@ -4,13 +4,42 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import img1 from '../../assets/Slider/slider1.jpg';
 import img2 from '../../assets/Slider/slider2.jpg';
+
+const PrevArrow = (props) => {
+  const { onClick } = props; // Destructure to get the onClick function
+  return (
+    <button
+      className="slick-prev"
+      onClick={onClick}
+      style={{ zIndex: 1, position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)' }}
+    >
+      {'<'} {/* or use an icon */}
+    </button>
+  );
+};
+
+const NextArrow = (props) => {
+  const { onClick } = props; // Destructure to get the onClick function
+  return (
+    <button
+      className="slick-next"
+      onClick={onClick}
+      style={{ zIndex: 1, position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)' }}
+    >
+      {'>'} {/* or use an icon */}
+    </button>
+  );
+};
+
 const HeroCarousel = () => {
   const slides = [
     {
       image: img1,
+      
     },
     {
       image: img2,
+      
     },
   ];
 
@@ -25,7 +54,9 @@ const HeroCarousel = () => {
     slidesToScroll: 1, // Number of slides to scroll
     centerMode: true, // Center the active slide
     centerPadding: '0', // Padding on left and right
-    arrows: true, //ding on left and right
+    arrows: true, // Enable arrows for navigation
+    prevArrow: <PrevArrow />, // Custom previous arrow
+    nextArrow: <NextArrow />, // Custom next arrow
   };
 
   return (
