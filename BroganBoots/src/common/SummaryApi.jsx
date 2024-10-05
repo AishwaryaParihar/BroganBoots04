@@ -6,6 +6,10 @@ const SummaryApi = {
         url : `${backendDomin}/api/userLogout`,
         method : "get"
       },
+      categoryProduct : {
+        url : `${backendDomin}/api/userLogout`,
+        method : "get"
+      },
 }
 
 

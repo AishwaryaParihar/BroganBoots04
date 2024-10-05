@@ -1,12 +1,15 @@
 require('dotenv').config();
 const express = require('express')
 const app = express('')
-const connectDB = require('./config/db')
+const connectDB = require('./config/db');
+const router = require('./router/router');
+
 
 app.get ('/',(req,res)=>{
     res.status(200).send('this is root')
 })
 
+app.use("/api", router);
 const PORT = 5050;
 
 connectDB()
