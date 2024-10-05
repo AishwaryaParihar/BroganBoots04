@@ -281,7 +281,7 @@ export const UploadProduct = ({ onClose, fetchData }) => {
             value={data.productFeatures}
             onChange={handleOnChange}
             className="p-2 rounded border border-gray-300 w-full"
-            required
+            
           />
 
           <label htmlFor="description" className="block font-semibold">
