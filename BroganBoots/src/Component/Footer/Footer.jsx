@@ -5,20 +5,20 @@ function Footer() {
     <>
       {/* Footer section start */}
       <div className="bg-[#205F83] text-white py-16">
-        <div className="lg:mx-10 md:mx-6 mx-auto flex lg:flex-nowrap md:flex-wrap sm:flex-wrap flex-wrap justify-between">
+        <div className="lg:mx-10 md:mx-6 px-4 sm:mx-auto mx-auto grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-10">
           {/* About Brogan Boots */}
-          <div className="sm:w-full md:w-1/2 lg:w-1/4 text-justify lg:mr-24 md:mr-16">
+          <div className="text-justify">
             <h3 className="text-2xl font-semibold mb-4">About Brogan Boots</h3>
             <p className="text-sm">
               Brogan Boots was built out of frustration to make trade-offs between clunky and delicate dress boots that fall apart after a few wears, or boots that were incredibly overpriced? And it is when I decided, there has to be another option.
             </p>
-            <p className="text-sm ">
+            <p className="text-sm mt-4">
               At Brogan Boots, we offer ridiculously high quality footwear designed, developed, and handcrafted in-house by skilled artisans, drawing inspiration from the world around us and our customers.
             </p>
           </div>
 
           {/* Our Category */}
-          <div className="sm:w-full md:w-1/2 lg:w-1/4">
+          <div className="lg:ms-20">
             <h3 className="text-2xl font-semibold mb-4">Our Category</h3>
             <ul className="space-y-2">
               <li><a href="#" className="hover:underline">Rugged</a></li>
@@ -31,7 +31,7 @@ function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="sm:w-full md:w-1/2 lg:w-1/4">
+          <div>
             <h3 className="text-2xl font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li><a href="#" className="hover:underline">About Us</a></li>
@@ -45,7 +45,7 @@ function Footer() {
           </div>
 
           {/* Registered Business Address */}
-          <div className="sm:w-full md:w-1/2 lg:w-1/4">
+          <div>
             <h3 className="text-2xl font-semibold mb-4">Registered Business Address</h3>
             <ul className="space-y-2">
               <li><a href="https://maps.app.goo.gl/rre5G1zuKzgNTFs67" target="_blank" className="hover:underline">663-B, Pocket-B, DDA Flats, Hari Nagar, Near Tilak Nagar Metro Station, New Delhi – 110064</a></li>
