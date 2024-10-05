@@ -1,9 +1,13 @@
-const backendDomin = 'http://localhost:8081'
+const backendDomin = 'http://localhost:5055'
 
 
 const SummaryApi = {
     logout_user : {
         url : `${backendDomin}/api/userLogout`,
+        method : "get"
+      },
+      categoryProduct : {
+        url : `${backendDomin}/api/category`,
         method : "get"
       },
 }
