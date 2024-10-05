@@ -26,7 +26,6 @@ const getProductController = require("../controller/getProduct");
 router.get("/category", getCategoryProduct)
 router.get('/countAddToCartProduct', countAddToCartProduct)
 router.post('/category-product', getCategoryWiseProductc)
-<<<<<<< HEAD
 console.log("router")
 
 
@@ -34,9 +33,7 @@ console.log("router")
 router.post("/upload-product", UploadProductController);
 router.post("/update-product", updateProductController);
 router.get("/get-product", getProductController);
-=======
 
->>>>>>> 3cccb5995ebe7ecb76e570ba6a265923fe79220d
 module.exports = router;
 
 
