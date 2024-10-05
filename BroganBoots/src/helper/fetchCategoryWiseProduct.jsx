@@ -1,4 +1,5 @@
-import SummaryApi from "../common/Index"
+import SummaryApi from "../common/SummaryApi"
+
 
 const fetchCategoryWiseProduct = async(category)=>{
     console.log(category)

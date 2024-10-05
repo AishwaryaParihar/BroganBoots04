@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaTimes, FaCloudUploadAlt, FaTrash } from "react-icons/fa"; // Importing react-icons
 import ProductCategory from "../../helper/ProductCategory";
 import UploadImage from "../../helper/UploadImage";
 import DisplayImage from "./DisplayImage";
@@ -86,13 +87,13 @@ export const UploadProduct = ({ onClose, fetchData }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-opacity-50 bg-gray-800">
-      <div className="p-6 bg-white rounded shadow-lg">
+      <div className="p-6 bg-white rounded shadow-lg w-full max-w-3xl h-full overflow-y-auto">
         <div className="flex justify-between mb-4">
           <h3 className="font-bold text-lg">Upload Product</h3>
-          <i
-            className="fas fa-times text-2xl cursor-pointer"
+          <FaTimes // Replaced Font Awesome times icon
+            className="text-2xl cursor-pointer"
             onClick={onClose}
-          ></i>
+          />
         </div>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <label htmlFor="productName" className="block font-semibold">
@@ -147,7 +148,9 @@ export const UploadProduct = ({ onClose, fetchData }) => {
           </label>
           <label htmlFor="uploadImageInput" className="flex flex-col items-center">
             <div className="bg-gray-100 rounded p-4 flex flex-col items-center cursor-pointer">
-              <i className="fas fa-cloud-upload-alt text-2xl text-gray-500"></i>
+              <FaCloudUploadAlt // Replaced Font Awesome cloud upload icon
+                className="text-2xl text-gray-500"
+              />
               <p className="text-gray-500 mt-2">Upload Product Image</p>
               <input
                 className="hidden"
@@ -161,7 +164,7 @@ export const UploadProduct = ({ onClose, fetchData }) => {
           <div className="flex flex-wrap gap-2">
             {data.productImage.length > 0 ? (
               data.productImage.map((el, index) => (
-                <div className="relative">
+                <div className="relative" key={index}>
                   <img
                     src={el}
                     alt={el}
@@ -177,7 +180,9 @@ export const UploadProduct = ({ onClose, fetchData }) => {
                     className="absolute bottom-0 right-0 bg-red-600 text-white p-1 rounded-full cursor-pointer"
                     onClick={() => handleDeleteProductImage(index)}
                   >
-                    <i className="fas fa-trash"></i>
+                    <FaTrash // Replaced Font Awesome trash icon
+                      className="text-white"
+                    />
                   </div>
                 </div>
               ))
