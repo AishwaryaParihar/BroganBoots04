@@ -10,7 +10,7 @@ const router = createBrowserRouter([
         element: <App />,
         children: [
             {
-                path: "",
+                path: "/",
                 element: <Sidebar />,
                 children: [
                     {
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
                     },
                     {
                         path: "contact",
-                        element: <Contact />  // Make sure this route exists
+                        element: <Contact />  // Ensure this component exists
                     }
                 ]
             }
