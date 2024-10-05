@@ -10,7 +10,7 @@ app.get ('/',(req,res)=>{
 })
 
 app.use("/api", router);
-const PORT = 5050;
+const PORT = 5055;
 
 connectDB()
 .then(()=>{

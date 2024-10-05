@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         {/* Left section with the logo */}
         <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src={logo} className="h-8" alt="Logo" />
+          <img src={logo} className="h-12" alt="Logo" />
         </Link>
 
         {/* Hamburger button - Visible on small screens */}
