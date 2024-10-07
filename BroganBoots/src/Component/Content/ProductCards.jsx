@@ -3,6 +3,7 @@ import displayINRCurrency from '../../helper/displayCurrency';
 import addToCart from '../../helper/addToCart';
 import { Link } from 'react-router-dom';
 import Context from '../../context/index';
+import { FaRupeeSign } from 'react-icons/fa';
 
 
 const ProductCard = ({ loading, data = [] }) => {
@@ -59,11 +60,11 @@ const ProductCard = ({ loading, data = [] }) => {
                                         </div>
                                         <p className="text-primary text-lg py-2">
                                             <del className="text-gray-500">
-                                                <i className="fa-solid fa-indian-rupee-sign text-sm"></i>
+                                            <FaRupeeSign />
                                                 {displayINRCurrency(product?.price)}
                                             </del>
                                             {"  "}From
-                                            <i className="fa-solid fa-indian-rupee-sign text-sm"></i>
+                                            <FaRupeeSign />
                                             {displayINRCurrency(product?.sellingPrice)}
                                         </p>
                                         <button className="w-full bg-[#205F83] text-white rounded py-2 uppercase" onClick={(e) => handleAddToCart(e, product?._id)}>
