@@ -3,7 +3,8 @@ import fetchCategoryWiseProduct from "../../helper/fetchCategoryWiseProduct";
 import { Link } from "react-router-dom";
 import Context from "../../context";
 import addToCart from "../../helper/addToCart"; 
-import img from "../../assets/EXTRALARGE.jpg"
+import img from "../../assets/EXTRALARGE.jpg";
+import displayINRCurrency from '../../helper/displayCurrency'; // Import currency helper
 
 
 const Cards = ({ category, heading }) => {
@@ -24,9 +25,6 @@ const Cards = ({ category, heading }) => {
     setLoading(false);
     setData(categoryProduct?.data);
   };
-
-
- 
 
   useEffect(() => {
     fetchData();
@@ -76,11 +74,11 @@ const Cards = ({ category, heading }) => {
                     <p className="text-primary text-lg font-semibold mt-2">
                       <del className="text-gray-500">
                         <i className="fas fa-rupee-sign text-sm"></i>
-                        {product.price}
+                        {displayINRCurrency(product.price)} {/* INR formatted price */}
                       </del>{" "}
                       From{" "}
                       <i className="fas fa-rupee-sign text-sm"></i>
-                      {product.sellingPrice}
+                      {displayINRCurrency(product.sellingPrice)} {/* INR formatted selling price */}
                     </p>
                     <button
                       className="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"

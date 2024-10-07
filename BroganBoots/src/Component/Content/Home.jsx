@@ -10,8 +10,8 @@ const Home = () => {
   return (
     <><Category/>
      <HeroCarousel/>
-     <ProductCard/>
      <Cards category={"rugged"} heading={"BestSeller"} />
+     <Cards category={"chelsea"} heading={"Chelsea Shoes"}/>
     </>
   )
 }

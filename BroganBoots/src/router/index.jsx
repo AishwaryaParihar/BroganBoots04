@@ -12,6 +12,7 @@ import { CancelProces } from '../Component/Content/CancelProces';
 import SearchProduct from '../Component/Content/SearchProduct';
 import ProductDetails from '../Component/Content/ProductDetails';
 import Cart from '../Component/Content/Cart';
+import KindOfProduct from '../Component/Content/KindOfProduct';
 
 export const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ export const router = createBrowserRouter([
       {
         path: 'cart',
         element: <Cart />,
+      },
+      {
+        path: 'product-category',
+        element: <KindOfProduct />,
       },
     ],
   },

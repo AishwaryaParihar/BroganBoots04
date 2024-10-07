@@ -40,6 +40,10 @@ const SummaryApi = {
         url : `${backendDomin}/api/addtoCart`,
         method : 'post'
       },
+      filterProduct : {
+        url : `${backendDomin}/api/filter-product`,
+        method : 'post'
+      },
 }
 
 

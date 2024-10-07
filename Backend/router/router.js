@@ -32,6 +32,7 @@ const updateProductController = require("../controller/updateProduct");
 const getProductController = require("../controller/getProduct");
 const UploadProductController = require("../controller/uploadProduct");
 const LoginController = require("../controller/login/LoginController");
+const filterProductController = require("../controller/filterProducts");
 
 
 
@@ -68,7 +69,7 @@ router.get('/getAbout', aboutController.getAbout);
 
 // POST update about (with image upload)
 router.post('/updateAbout', upload.single('image'), aboutController.updateAbout);
-
+router.post('/filter-product',filterProductController)
 
 
 
