@@ -6,6 +6,9 @@ import DisplayImage from "./DisplayImage";
 import SummaryApi from "../../common/index";
 import { toast } from "react-toastify";
 import ProductSize from "./productSize";
+import { RxCross2 } from "react-icons/rx";
+import { IoCloudUploadSharp } from "react-icons/io5";
+import { AiTwotoneDelete } from "react-icons/ai";
 
 const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
   const [data, setData] = useState({
@@ -113,13 +116,11 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="p-6 bg-white rounded shadow-md w-full max-w-md">
+      <div className="p-4 bg-white rounded shadow-md w-full max-w-3xl h-auto max-h-[95vh] overflow-y-auto">
         <div className="flex justify-between">
           <h3 className="font-bold text-xl">Edit Product</h3>
-          <i
-            className="fas fa-times cursor-pointer text-2xl"
-            onClick={onClose}
-          ></i>
+         
+          <RxCross2 className="cursor-pointer text-2xl" onClick={onClose} />
         </div>
         <form className="mt-4 space-y-4" onSubmit={handleSubmit}>
           <label htmlFor="productName">Product Name:</label>
@@ -189,7 +190,8 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
           <label htmlFor="productImage">Product Image:</label>
           <label htmlFor="uploadImageInput">
             <div className="bg-gray-100 rounded flex flex-col items-center cursor-pointer">
-              <i className="fas fa-cloud-upload-alt text-3xl text-gray-600"></i>
+            
+              <IoCloudUploadSharp className='text-3xl text-gray-600' />
               <p className="text-gray-600">Upload Product Image</p>
               <input
                 className="hidden"
@@ -219,7 +221,8 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
                       className="absolute bottom-0 right-0 p-1 bg-red-600 text-white rounded cursor-pointer"
                       onClick={() => handleDeleteProductImage(index)}
                     >
-                      <i className="fas fa-trash"></i>
+                    
+                      <AiTwotoneDelete />
                     </div>
                   </div>
                 ))}

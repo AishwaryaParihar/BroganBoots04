@@ -31,6 +31,7 @@ const CategoryWiseProductDisplay = ({ category, heading }) => {
   return (
     <div className="container mx-auto p-5 pt-0">
       <div className="heading py-3">
+        
         <h2 className="text-2xl font-semibold"> {heading}</h2>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

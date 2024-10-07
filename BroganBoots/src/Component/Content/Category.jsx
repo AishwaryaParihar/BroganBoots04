@@ -36,7 +36,7 @@ const Category = () => {
   );
 
   return (
-    <div className="container-fluid p-0  m-0">
+    <div className="container-fluid">
       <div className="">
         <div className="bg-gray-200 flex justify-center py-2">
           {loading && <p className="text-lg font-semibold">Loading...</p>}

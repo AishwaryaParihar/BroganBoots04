@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import axios from 'axios';  // Import axios for making API requests
-import SummaryApi from '../api/SummaryApi'; // Import your SummaryApi for API config
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import axios from 'axios'; // Import axios for making API requests
+import SummaryApi from '../common'; // Import your SummaryApi for API config
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState(''); // For showing error messages
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -13,11 +15,13 @@ const Login = () => {
     try {
       // Making a POST request to the login API with the email and password
       const response = await axios.post(SummaryApi.login.url, { email, password });
-      
+
       // Handle successful login response
       if (response.data.success) {
         alert('Login successful');
-        // Do something, like redirect or save token in localStorage
+        // Optionally save a token or user info in localStorage if needed
+        localStorage.setItem('isLoggedIn', 'true'); // Example of saving login state
+        navigate('/dashboard'); // Navigate to the dashboard after login
       }
     } catch (error) {
       // Handle error from the login API

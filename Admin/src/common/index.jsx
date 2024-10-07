@@ -92,6 +92,11 @@ const SummaryApi = {
     url : `${backendDomin}/api/login`,   // login
     method: 'post'
   },
+  deleteProduct: {
+    url : `${backendDomin}/api/delete-product`, 
+    method: 'delete'
+  },
+  
 };
 
 export default SummaryApi;
