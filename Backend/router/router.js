@@ -34,7 +34,8 @@ router.post('/category-product', getCategoryWiseProductc)
 router.post("/uploadProduct", UploadProductController);
 router.post("/update-product", updateProductController);
 router.get("/get-product", getProductController);
-router.get(getCategoryProduct)
+
+
 
 
 // login
