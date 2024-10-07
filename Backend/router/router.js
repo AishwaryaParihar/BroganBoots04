@@ -5,25 +5,23 @@ const contactusController = require("../controller/contactus")
 const searchProduct =require('../controller/searchProduct')
 const getProductDetails = require("../controller/getProductDetails");
 const addToCartController =require('../controller/addToCartController');
-const aboutController =require('../controller/aboutController')
+const Saveabout =require('../controller/saveabout')
+const Getabout =require('../controller/getabout')
+const Editabout =require('../controller/editabout')
 const multer = require('multer');
 const path = require('path');
 
-// Multer setup for file upload
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, './uploads');
+      cb(null, 'uploads/') // Uploads directory
     },
     filename: function (req, file, cb) {
-      cb(null, `${Date.now()}-${file.originalname}`);
-    },
+      cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname)) // File name
+    }
   });
   
   const upload = multer({ storage: storage });
-
-
-
-
+  
 
 const countAddToCartProduct = require("../controller/countAddToCartProduct");
 const getCategoryWiseProductc = require("../controller/getCategoryWiseProduct");
@@ -54,20 +52,12 @@ router.get("/search", searchProduct);
 
 // loginghfh
 router.post("/login", LoginController);
-
-
-
-
-
-
 router.post("/addtoCart", addToCartController);
 
 
-
-router.get('/getAbout', aboutController.getAbout);
-
-// POST update about (with image upload)
-router.post('/updateAbout', upload.single('image'), aboutController.updateAbout);
+router.post('/about-imageuplode',  upload.single('image'), Saveabout);
+router.put('/about-imageuplode/:id',  upload.single('image'), Editabout);
+router.get('/about-imageuplode/:id', Getabout);
 
 
 

@@ -1,60 +1,56 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useEffect, useState } from 'react'
+import SummaryApi from '../../common/Index';
+import imgAbout from '../../assets/EXTRALARGE.jpg';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 const About = () => {
-  const [aboutData, setAboutData] = useState({
-    description: '',
-    imageUrl: '',
-  });
+  const [data, setData] = useState([]);
+  const [aboutus, setAboutus] = useState('');
+  
 
-  // Fetch About data from the API
   useEffect(() => {
-    const fetchAboutData = async () => {
+    const fetchAboutus = async () => {
       try {
-        const response = await fetch('http://localhost:5173/api/about');
+        const response = await fetch(SummaryApi.aboutImage.url); 
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
         const data = await response.json();
-        setAboutData(data);
+        setAboutus(data);
+     // alert(data.image);
       } catch (error) {
-        console.error('Error fetching about data:', error);
-      }
+        alert(error.message);
+      } 
     };
 
-    fetchAboutData();
+    fetchAboutus();
+  
   }, []);
 
   return (
-    <div className=" py-12 mx-20">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
-          
-          {/* Text Section */}
-          <div className="lg:w-1/2 w-full space-y-6">
-            <h2 className="text-4xl lg:text-5xl font-bold leading-tight text-gray-900">
-              About <span className="text-primary">Bro</span>gan B<span className="text-primary">oo</span>ts
-            </h2>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              {aboutData.description || 'Loading description...'} {/* Render description from API */}
-            </p>
-          </div>
-
-          {/* Image Section */}
-          <div className="lg:w-1/2 w-full">
-            <div className="flex justify-center lg:justify-end">
-              {aboutData.imageUrl ? (
-                <img 
-                  src={aboutData.imageUrl} // Render image from API
-                  alt="Brogan Boots" 
-                  className="w-full max-w-lg rounded-lg  transition-transform transform hover:scale-105 duration-300"
-                />
-              ) : (
-                <p>Loading image...</p>
-              )}
+    <div>
+      <div className="container pt-5">
+        <div className="row pt-5">
+          <div className="col-lg-6  pt-lg-0 pt-5 d-flex align-items-center px-4 ">
+           
+            <div className="join pt-lg-0 pt-5">
+              <h2> About <span className="text-primary">Bro</span>gan B<span className="text-primary">oo</span>ts</h2>
+              <p>Brogan Boots was built out of frustration to make trade-offs between – clunky and delicate dress boots that fall apart after a few wears, or boots that were incredibly overpriced? And it is when I decided, there has to be another option</p>
+              <p>At Brogan Boots we offer ridiculously high quality footwear that are designed, developed and hand crafted in-house by our efficient and highly skilled artisans, drawing inspiration from the world around us and our amazing customers.</p>
             </div>
           </div>
-          
+          <div className="col-lg-6">
+            <div className="text-end py-4">
+
+
+              <img src={`http://localhost:8087/${aboutus.image}`} alt="" className="img-club" />
+            </div>
+          </div>
         </div>
       </div>
+
     </div>
-  );
+  )
 }
 
-export default About;
+export default About
