@@ -58,10 +58,7 @@ router.post("/addtoCart", addToCartController);
 
 
 
-router.get('/getAbout', aboutController.getAbout);
 
-// POST update about (with image upload)
-router.post('/updateAbout', upload.single('image'), aboutController.updateAbout);
 router.post('/filter-product',filterProductController)
 
 
