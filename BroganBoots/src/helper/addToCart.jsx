@@ -1,5 +1,6 @@
 
 import { toast } from 'react-toastify'
+import SummaryApi from '../common/SummaryApi'
 
 
 const addToCart = async(e,id, selectedSize) =>{

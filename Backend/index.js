@@ -16,7 +16,7 @@ const Admin_url = process.env.Admin_url
 
 app.use(
     cors({
-      origin: [`${Admin_url}`],
+      origin: [`${Admin_url}`,`${FRONTEND_URL}`],
       methods: ['GET', 'POST', 'PUT', 'DELETE'],
       credentials: true,
     })

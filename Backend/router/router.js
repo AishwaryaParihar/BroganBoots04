@@ -1,19 +1,27 @@
 const express = require("express");
+const router = express.Router();
 const getCategoryProduct = require("../controller/categoryProduct");
 const contactusController = require("../controller/contactus")
-// const contactUsControllers =require('../controller/contactUsControllers')
-const router = express.Router();
+const searchProduct =require('../controller/searchProduct')
+const getProductDetails = require("../controller/getProductDetails");
+const addToCartController =require('../controller/addToCartController');
+const Saveabout =require('../controller/saveabout')
+const Getabout =require('../controller/getabout')
+const Editabout =require('../controller/editabout')
+const multer = require('multer');
+const path = require('path');
 
-router.get("/category", getCategoryProduct)
-
-//contact Form routes
-router.post("/contactusController",contactusController)
-
-
-// router.post("/createContact",contactUsControllers.createContact)
-// router.get("/getContacts",contactUsControllers.getContacts)
-// router.get("/getContactById",contactUsControllers.getContactById)
-
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads/') // Uploads directory
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname)) // File name
+    }
+  });
+  
+  const upload = multer({ storage: storage });
+  
 
 const countAddToCartProduct = require("../controller/countAddToCartProduct");
 const getCategoryWiseProductc = require("../controller/getCategoryWiseProduct");
@@ -26,22 +34,42 @@ const deleteProductController = require("../controller/deleteProductController")
 
 
 
-router.get("/category", getCategoryProduct)
+router.get("/get-categoryProduct", getCategoryProduct)
 router.get('/countAddToCartProduct', countAddToCartProduct)
 router.post('/category-product', getCategoryWiseProductc)
-console.log("router")
 
 
 //  product
 router.post("/uploadProduct", UploadProductController);
 router.post("/update-product", updateProductController);
 router.get("/get-product", getProductController);
+<<<<<<< HEAD
 router.delete("/delete-product/:productId", deleteProductController);
 
+=======
+router.post("/product-details", getProductDetails)
+>>>>>>> b7bbf9f9d14f28b850eba70f16f7cd0cfaa1062b
 
+router.get("/category", getCategoryProduct)
 
-// login
+//contact Form routes
+router.post("/contactusController",contactusController)
+router.get("/search", searchProduct);
+
+// loginghfh
 router.post("/login", LoginController);
+router.post("/addtoCart", addToCartController);
+
+
+router.post('/about-imageuplode',  upload.single('image'), Saveabout);
+router.put('/about-imageuplode/:id',  upload.single('image'), Editabout);
+router.get('/about-imageuplode/:id', Getabout);
+
+
+
+
+
+
 
 
 module.exports = router;
