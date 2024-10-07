@@ -2,22 +2,11 @@ const express = require("express");
 const getCategoryProduct = require("../controller/categoryProduct");
 const contactusController = require("../controller/contactus")
 const searchProduct =require('../controller/searchProduct')
-const aboutController =require('../controller/aboutController')
-const router = express.Router();
-const multer = require('multer');
-const path = require('path');
 
-// Multer setup for file upload
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, './uploads');
-    },
-    filename: function (req, file, cb) {
-      cb(null, `${Date.now()}-${file.originalname}`);
-    },
-  });
-  
-  const upload = multer({ storage: storage });
+const router = express.Router();
+
+
+
 
 
 router.get("/category", getCategoryProduct)
@@ -61,10 +50,6 @@ router.post("/addtoCart", addToCartController);
 
 
 
-router.get('/getAbout', aboutController.getAbout);
-
-// POST update about (with image upload)
-router.post('/updateAbout', upload.single('image'), aboutController.updateAbout);
 
 
 

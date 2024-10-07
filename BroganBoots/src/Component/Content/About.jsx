@@ -1,26 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react'
+import imgAbout from '../../assets/EXTRALARGE.jpg'
 
 const About = () => {
-  const [aboutData, setAboutData] = useState({
-    description: '',
-    imageUrl: '',
-  });
-
-  // Fetch About data from the API
-  useEffect(() => {
-    const fetchAboutData = async () => {
-      try {
-        const response = await fetch('http://localhost:5173/api/about');
-        const data = await response.json();
-        setAboutData(data);
-      } catch (error) {
-        console.error('Error fetching about data:', error);
-      }
-    };
-
-    fetchAboutData();
-  }, []);
-
   return (
     <div className=" py-12 mx-20">
       <div className="container mx-auto px-4 lg:px-8">
@@ -32,29 +13,28 @@ const About = () => {
               About <span className="text-primary">Bro</span>gan B<span className="text-primary">oo</span>ts
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed">
-              {aboutData.description || 'Loading description...'} {/* Render description from API */}
+              Brogan Boots was built out of frustration to make trade-offs between clunky and delicate dress boots that fall apart after a few wears, or boots that were incredibly overpriced. And it is when I decided, there has to be another option.
+            </p>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              At Brogan Boots, we offer ridiculously high-quality footwear that are designed, developed, and hand-crafted in-house by our efficient and highly skilled artisans, drawing inspiration from the world around us and our amazing customers.
             </p>
           </div>
 
           {/* Image Section */}
           <div className="lg:w-1/2 w-full">
             <div className="flex justify-center lg:justify-end">
-              {aboutData.imageUrl ? (
-                <img 
-                  src={aboutData.imageUrl} // Render image from API
-                  alt="Brogan Boots" 
-                  className="w-full max-w-lg rounded-lg  transition-transform transform hover:scale-105 duration-300"
-                />
-              ) : (
-                <p>Loading image...</p>
-              )}
+              <img 
+                src={imgAbout} 
+                alt="Brogan Boots" 
+                className="w-full max-w-lg rounded-lg  transition-transform transform hover:scale-105 duration-300"
+              />
             </div>
           </div>
           
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default About;
+export default About
