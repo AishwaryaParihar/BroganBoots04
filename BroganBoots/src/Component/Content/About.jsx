@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import SummaryApi from '../../common/Index';
+import SummaryApi from '../../common/SummaryApi';
 import imgAbout from '../../assets/EXTRALARGE.jpg';
 import axios from 'axios';
 import { toast } from 'react-toastify';

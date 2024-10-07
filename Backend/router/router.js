@@ -43,12 +43,9 @@ router.post('/category-product', getCategoryWiseProductc)
 router.post("/uploadProduct", UploadProductController);
 router.post("/update-product", updateProductController);
 router.get("/get-product", getProductController);
-<<<<<<< HEAD
 router.delete("/delete-product/:productId", deleteProductController);
 
-=======
 router.post("/product-details", getProductDetails)
->>>>>>> b7bbf9f9d14f28b850eba70f16f7cd0cfaa1062b
 
 router.get("/category", getCategoryProduct)
 
