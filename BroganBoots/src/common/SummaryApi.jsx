@@ -1,4 +1,4 @@
-const backendDomin = 'http://localhost:5055'
+const backendDomin = 'http://localhost:6060'
 
 
 const SummaryApi = {
