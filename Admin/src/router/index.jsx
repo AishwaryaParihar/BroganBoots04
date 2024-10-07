@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Product from "../component/content/Product";
-
 import Sidebar from "../component/Sidebar";
 import ContactList from "../component/content/ContactList";
+import Login from "../component/Login";
 
 const router = createBrowserRouter([
     {
@@ -11,7 +11,11 @@ const router = createBrowserRouter([
         element: <App />,
         children: [
             {
-                path: "/",
+                path: "",
+                element: <Login />
+            },
+            {
+                path: "dashboard",
                 element: <Sidebar />,
                 children: [
                     {
@@ -20,7 +24,7 @@ const router = createBrowserRouter([
                     },
                     {
                         path: "contact",
-                        element: < ContactList/>  // Ensure this component exists
+                        element: <ContactList />  // Ensure this component exists
                     }
                 ]
             }

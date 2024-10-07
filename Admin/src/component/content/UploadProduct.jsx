@@ -277,7 +277,7 @@ export const UploadProduct = ({ onClose, fetchData }) => {
           <input
             type="text"
             id="features"
-            placeholder="Enter Product Features"
+            placeholder="Enter Product Features"  
             name="features"
             value={data.productFeatures}
             onChange={handleOnChange}

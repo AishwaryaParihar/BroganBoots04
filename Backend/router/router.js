@@ -22,6 +22,7 @@ const updateProductController = require("../controller/updateProduct");
 const getProductController = require("../controller/getProduct");
 const UploadProductController = require("../controller/uploadProduct");
 const LoginController = require("../controller/login/LoginController");
+const deleteProductController = require("../controller/deleteProductController");
 
 
 
@@ -35,6 +36,8 @@ console.log("router")
 router.post("/uploadProduct", UploadProductController);
 router.post("/update-product", updateProductController);
 router.get("/get-product", getProductController);
+router.delete("/delete-product/:productId", deleteProductController);
+
 
 
 // login
