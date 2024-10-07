@@ -6,10 +6,6 @@ const SummaryApi = {
         url : `${backendDomin}/api/userLogout`,
         method : "get"
       },
-      categoryProduct : {
-        url : `${backendDomin}/api/category`,
-        method : "get"
-      },
       createContact : {
         url : `${backendDomin}/api/createContact`,
         method : "post"
@@ -29,6 +25,13 @@ const SummaryApi = {
       categoryWiseProduct : {
         url : `${backendDomin}/api/category-product`,
         method : 'post'
+      },
+      productDetails : {
+        url : `${backendDomin}/api/product-details`,
+        method : 'post'
+      },
+      categoryProduct : {
+        url : `${backendDomin}/api/get-categoryProduct`,
       },
 }
 
