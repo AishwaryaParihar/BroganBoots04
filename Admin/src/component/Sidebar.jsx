@@ -20,6 +20,12 @@ const Sidebar = () => {
           >
             Contact
           </Link>
+          <Link
+            to={'aboutUpdate'}
+            className="block px-4 py-2 text-gray-700 rounded-md hover:bg-blue-500 hover:text-white transition duration-300"
+          >
+          About Update
+          </Link>
         </nav>
       </aside>
 

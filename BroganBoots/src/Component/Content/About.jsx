@@ -1,36 +1,60 @@
-import React from 'react'
-import imgAbout from '../../assets/EXTRALARGE.jpg'
+import React, { useState, useEffect } from 'react';
 
 const About = () => {
+  const [aboutData, setAboutData] = useState({
+    description: '',
+    imageUrl: '',
+  });
+
+  // Fetch About data from the API
+  useEffect(() => {
+    const fetchAboutData = async () => {
+      try {
+        const response = await fetch('http://localhost:5173/api/about');
+        const data = await response.json();
+        setAboutData(data);
+      } catch (error) {
+        console.error('Error fetching about data:', error);
+      }
+    };
+
+    fetchAboutData();
+  }, []);
+
   return (
-    <div>
-      <div className="container pt-12">
-        <div className="flex flex-col lg:flex-row items-center justify-between pt-12">
+    <div className=" py-12 mx-20">
+      <div className="container mx-auto px-4 lg:px-8">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
           
-          <div className="lg:w-1/2 w-full px-4">
-            <div className="space-y-6">
-              <h2 className="text-3xl lg:text-4xl font-bold">
-                About <span className="text-primary">Bro</span>gan B<span className="text-primary">oo</span>ts
-              </h2>
-              <p className="text-gray-700">
-                Brogan Boots was built out of frustration to make trade-offs between clunky and delicate dress boots that fall apart after a few wears, or boots that were incredibly overpriced. And it is when I decided, there has to be another option.
-              </p>
-              <p className="text-gray-700">
-                At Brogan Boots we offer ridiculously high-quality footwear that are designed, developed, and hand-crafted in-house by our efficient and highly skilled artisans, drawing inspiration from the world around us and our amazing customers.
-              </p>
-            </div>
+          {/* Text Section */}
+          <div className="lg:w-1/2 w-full space-y-6">
+            <h2 className="text-4xl lg:text-5xl font-bold leading-tight text-gray-900">
+              About <span className="text-primary">Bro</span>gan B<span className="text-primary">oo</span>ts
+            </h2>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              {aboutData.description || 'Loading description...'} {/* Render description from API */}
+            </p>
           </div>
 
-          <div className="lg:w-1/2 w-full mt-8 lg:mt-0">
-            <div className="flex justify-center lg:justify-end py-4">
-              <img src={imgAbout} alt="Brogan Boots" className="max-w-xl h-auto" />
+          {/* Image Section */}
+          <div className="lg:w-1/2 w-full">
+            <div className="flex justify-center lg:justify-end">
+              {aboutData.imageUrl ? (
+                <img 
+                  src={aboutData.imageUrl} // Render image from API
+                  alt="Brogan Boots" 
+                  className="w-full max-w-lg rounded-lg  transition-transform transform hover:scale-105 duration-300"
+                />
+              ) : (
+                <p>Loading image...</p>
+              )}
             </div>
           </div>
           
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default About
+export default About;
