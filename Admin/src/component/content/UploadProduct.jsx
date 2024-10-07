@@ -3,9 +3,10 @@ import { FaTimes, FaCloudUploadAlt, FaTrash } from "react-icons/fa"; // Importin
 import ProductCategory from "../../helper/ProductCategory";
 import UploadImage from "../../helper/UploadImage";
 import DisplayImage from "./DisplayImage";
-import SummaryApi from "../../common/index";
+// import SummaryApi from "../../common/index";
 import { toast } from "react-toastify";
 import ProductSize from "./productSize";
+import SummaryApi from "../../common";
 
 export const UploadProduct = ({ onClose, fetchData }) => {
   const [data, setData] = useState({

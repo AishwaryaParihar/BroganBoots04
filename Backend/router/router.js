@@ -17,9 +17,11 @@ router.post("/contactusController",contactusController)
 
 const countAddToCartProduct = require("../controller/countAddToCartProduct");
 const getCategoryWiseProductc = require("../controller/getCategoryWiseProduct");
-const UploadProductController = require("../controller/uploadProduct");
+// const UploadProductController = require("../controller/uploadProduct");
 const updateProductController = require("../controller/updateProduct");
 const getProductController = require("../controller/getProduct");
+const UploadProductController = require("../controller/uploadProduct");
+const LoginController = require("../controller/login/LoginController");
 
 
 
@@ -29,10 +31,15 @@ router.post('/category-product', getCategoryWiseProductc)
 
 
 //  product
-router.post("/upload-product", UploadProductController);
+router.post("/uploadProduct", UploadProductController);
 router.post("/update-product", updateProductController);
 router.get("/get-product", getProductController);
 router.get(getCategoryProduct)
+
+
+// login
+router.post("/login", LoginController);
+
 
 module.exports = router;
 
