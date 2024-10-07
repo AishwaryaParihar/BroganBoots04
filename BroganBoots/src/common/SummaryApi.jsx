@@ -32,7 +32,7 @@ const SummaryApi = {
       },
       addtoCart : {
         url : `${backendDomin}/api/addtoCart`,
-        method : 'get'
+        method : 'get'},
       productDetails : {
         url : `${backendDomin}/api/product-details`,
         method : 'post'
