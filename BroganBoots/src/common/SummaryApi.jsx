@@ -10,10 +10,6 @@ const SummaryApi = {
         url : `${backendDomin}/api/createContact`,
         method : "post"
       },
-      addToCartProduct : {
-        url : `${backendDomin}/api/addtoCart`,
-        method : "post"
-      },
       current_user : {
         url : `${backendDomin}/api/user-details`,
         method : "get"
@@ -39,6 +35,10 @@ const SummaryApi = {
       },
       categoryProduct : {
         url : `${backendDomin}/api/get-categoryProduct`,
+      },
+      addToCartProduct : {
+        url : `${backendDomin}/api/addtoCart`,
+        method : 'post'
       },
 }
 

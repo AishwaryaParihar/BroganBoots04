@@ -1,14 +1,13 @@
 const express = require("express");
+const router = express.Router();
 const getCategoryProduct = require("../controller/categoryProduct");
 const contactusController = require("../controller/contactus")
 const searchProduct =require('../controller/searchProduct')
-const router = express.Router();
+const getProductDetails = require("../controller/getProductDetails");
+const addToCartController =require('../controller/addToCartController');
 
-router.get("/category", getCategoryProduct)
 
-//contact Form routes
-router.post("/contactusController",contactusController)
-router.get("/search", searchProduct);
+
 
 
 const countAddToCartProduct = require("../controller/countAddToCartProduct");
@@ -30,9 +29,13 @@ router.post('/category-product', getCategoryWiseProductc)
 router.post("/uploadProduct", UploadProductController);
 router.post("/update-product", updateProductController);
 router.get("/get-product", getProductController);
+router.post("/product-details", getProductDetails)
 
+router.get("/category", getCategoryProduct)
 
-
+//contact Form routes
+router.post("/contactusController",contactusController)
+router.get("/search", searchProduct);
 
 // login
 router.post("/login", LoginController);
@@ -40,7 +43,8 @@ router.post("/login", LoginController);
 
 
 
-const addToCartController =require('../controller/addToCartController')
+
+
 router.post("/addtoCart", addToCartController);
 module.exports = router;
 

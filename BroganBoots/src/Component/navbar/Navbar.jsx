@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import logo from '../../assets/logo.jpg';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaSearch, FaCartPlus } from 'react-icons/fa';
 import Cart from '../Content/Cart';
+import Context from '../../context';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState('');
+  const context = useContext(Context);
   const [showCart, setShowCart] = useState(false);
   const navigate = useNavigate();
 
@@ -119,7 +121,7 @@ const Navbar = () => {
               <FaCartPlus />
               {/* Add a badge for item count */}
               <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full px-1">
-                3
+              {context?.cartProductCount}
               </span>
             </button>
           </div>

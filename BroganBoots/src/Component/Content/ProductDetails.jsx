@@ -1,14 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import displayINRCurrency from "../../helper/displayCurrency";
-import CategoryWiseProductDisplay from "./CategoryWiseProductDisplay";
-import addToCart from "../../helper/addToCart";
+// import CategoryWiseProductDisplay from "./CategoryWiseProductDisplay";
+
 import Context from "../../context/index";
 import SummaryApi from "../../common/SummaryApi";
 import { useDispatch, useSelector } from "react-redux";
 import { decrement, increment, setCount } from "../../store/counterSlice";
 import { FaStar } from "react-icons/fa"; // Import the star icon
-
+import CategoryWiseProductDisplay from "./CategoryWiseProductDisplay";
+import DetailsImg from '../../assets/detail.png'
+import addToCart from "../../helper/addToCart";
 const ProductDetails = () => {
   const dispatch = useDispatch();
   const count = useSelector((state) => state.counter.count);
@@ -97,7 +99,7 @@ const ProductDetails = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-10 mt-10">
+    <div className="container mx-auto px-4 py-2 ">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Product Image */}
         <div className="flex flex-col items-center">
@@ -240,9 +242,10 @@ const ProductDetails = () => {
           </button>
         </div>
       </div>
-
+   <img src={DetailsImg} alt="" className="w-full h-full "/>
       {/* Related Products */}
-      <CategoryWiseProductDisplay />
+      <CategoryWiseProductDisplay  category={data.category}
+          heading={"Customers also bought"}/>
     </div>
   );
 };
