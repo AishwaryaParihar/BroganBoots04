@@ -52,7 +52,7 @@ const Category = () => {
                       <img
                         src={product?.productImage[0]}
                         alt={product.category}
-                        className="w-full h-32 object-cover"
+                        className="w-40 h-40 object-cover rounded-full"
                       />
                     </div>
                     <div className="py-2 text-capitalize text-lg">

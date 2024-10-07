@@ -10,6 +10,7 @@ import { ShipmentPolicy } from "../Component/Content/ShipmentPolicy";
 import TermsAndConditions from "../Component/Content/TermsAndConditions";
 import { CancelProces } from "../Component/Content/CancelProces";
 import SearchProduct from "../Component/Content/SearchProduct";
+import ProductDetails from "../Component/Content/ProductDetails";
 
 export const router = createBrowserRouter([
     {
@@ -54,7 +55,10 @@ export const router = createBrowserRouter([
             },
             {
                 path:"searchProduct",
-                element: <SearchProduct/>
+                element: <SearchProduct/>},
+                {
+                path:"product/:id",
+                element: <ProductDetails/>
             },
         ]
     }

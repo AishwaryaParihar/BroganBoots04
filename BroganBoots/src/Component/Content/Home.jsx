@@ -12,7 +12,6 @@ const Home = () => {
      <HeroCarousel/>
      <ProductCard/>
      <Cards category={"rugged"} heading={"BestSeller"} />
-     <ProductDetails/>
     </>
   )
 }
