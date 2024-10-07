@@ -8,7 +8,11 @@ const FRONTEND_URL= process.env.FRONTEND_URL
 
 app.use(
     cors({
+<<<<<<< HEAD
+      origin: 'http://localhost:5173 ',
+=======
       origin: 'http://localhost:5173 ,http://localhost:5173 ',
+>>>>>>> 1cc19114384134c742cc08a5bda8790d203a8350
       credentials: true,
     })
   );
