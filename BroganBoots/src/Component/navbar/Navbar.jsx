@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import logo from "../../assets/logo.jpg";
-import { Link, useNavigate } from "react-router-dom";
-import { FaCartPlus } from "react-icons/fa";
-import Cart from "../Content/Cart"
+import logo from '../../assets/logo.jpg';
+import { Link, useNavigate } from 'react-router-dom';
+import { FaSearch, FaCartPlus } from 'react-icons/fa';
+import Cart from '../Content/Cart';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState('');
-  const [showCart, setShowCart] = useState(false); 
+  const [showCart, setShowCart] = useState(false);
   const navigate = useNavigate();
 
   const toggleCartOffcanvas = () => {
@@ -25,14 +25,17 @@ const Navbar = () => {
     if (value) {
       navigate(`/search?q=${value}`);
     } else {
-      navigate("/searchProduct");
+      navigate('/searchProduct');
     }
   };
 
   return (
-    <nav className="border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700">
+    <nav className="border-b border-gray-200 bg-white shadow-sm dark:bg-gray-800 dark:border-gray-700">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+        <Link
+          to="/"
+          className="flex items-center space-x-3 rtl:space-x-reverse"
+        >
           <img src={logo} className="h-12" alt="Logo" />
         </Link>
 
@@ -62,14 +65,16 @@ const Navbar = () => {
         </button>
 
         <div
-          className={`w-full md:flex md:items-center md:space-x-8 md:w-auto ${isOpen ? 'block' : 'hidden'}`}
+          className={`w-full md:flex md:items-center md:space-x-8 md:w-auto ${
+            isOpen ? 'block' : 'hidden'
+          }`}
           id="navbar-hamburger"
         >
           <ul className="flex flex-col mt-4 rounded-lg bg-gray-50 dark:bg-gray-800 md:flex-row md:mt-0 md:bg-transparent dark:md:bg-transparent">
             <li>
               <Link
                 to="/"
-                className="block py-2 px-3 text-white bg-blue-700 rounded dark:bg-blue-600 md:text-gray-900 md:bg-transparent dark:md:text-white"
+                className="block py-2 px-3 text-white bg-gray-700 rounded dark:bg-gray-600 md:text-gray-900 md:bg-transparent dark:md:text-black transition duration-200 hover:bg-gray-600"
                 aria-current="page"
               >
                 Home
@@ -78,7 +83,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/about"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 md:dark:text-white md:hover:bg-transparent dark:hover:bg-gray-700 dark:hover:text-white"
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 md:dark:text-white md:hover:bg-transparent dark:hover:bg-gray-700 dark:hover:text-white transition duration-200"
               >
                 About
               </Link>
@@ -86,7 +91,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/contactus"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 md:dark:text-white md:hover:bg-transparent dark:hover:bg-gray-700 dark:hover:text-white"
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 md:dark:text-white md:hover:bg-transparent dark:hover:bg-gray-700 dark:hover:text-white transition duration-200"
               >
                 Contact us
               </Link>
@@ -101,35 +106,52 @@ const Navbar = () => {
                 onChange={handleSearch}
                 type="text"
                 placeholder="Search..."
-                className="p-2 pl-4 pr-10 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="p-3 pl-10 pr-10 w-full text-sm text-gray-900 bg-gray-100 rounded-full border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-black focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500 transition duration-200"
               />
-              <button className="absolute right-2 top-2 text-gray-500 dark:text-gray-300">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M11.742 13.063a6.45 6.45 0 1 1 .001-12.903 6.45 6.45 0 0 1-.001 12.903zm-1.4-1.4a5.45 5.45 0 1 0-.03-.068c.047.038.094.078.138.118a5.444 5.444 0 0 0 .198.267l.024.027 1.54 1.54c.17.17.439.17.609 0a.425.425 0 0 0 0-.609l-1.538-1.539z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+              <button className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-900 dark:text-gray-500">
+                <FaSearch className="w-5 h-5" />
               </button>
             </div>
-
             <button
-              className="flex items-center p-2 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
               onClick={toggleCartOffcanvas}
+              className="relative text-3xl mt-1 text-gray-900"
             >
-              <FaCartPlus className="text-2xl" />
+              <FaCartPlus />
+              {/* Add a badge for item count */}
+              <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full px-1">
+                3
+              </span>
             </button>
           </div>
         </div>
+
+        <div className={`md:hidden w-full ${isOpen ? 'block' : 'hidden'}`}>
+  <div className="flex items-center p-2 relative">
+    <input
+      onChange={handleSearch}
+      type="text"
+      placeholder="Search..."
+      className="w-full p-3 pl-10 pr-10 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 transition duration-200"
+    />
+    <button className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-300">
+      <FaSearch className="w-5 h-5" />
+    </button>
+
+    <button
+      onClick={toggleCartOffcanvas}
+      className="absolute right-3 top-1/2 transform -translate-y-1/2"
+    >
+      <FaCartPlus className="text-3xl text-gray-900 cursor-pointer" />
+    </button>
+  </div>
+</div>
+
       </div>
-      
-      <Cart show={showCart} toggleOffcanvas={toggleCartOffcanvas} />
+
+      {/* Optional Cart Offcanvas Component */}
+      {showCart && (
+        <Cart show={showCart} toggleOffcanvas={toggleCartOffcanvas} />
+      )}
     </nav>
   );
 };
