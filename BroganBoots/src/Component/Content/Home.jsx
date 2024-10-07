@@ -3,6 +3,8 @@ import HeroCarousel from './HeroCarousel'
 import Category from './Category'
 import ProductCard from './ProductCards'
 import Cards from './Cards'
+import ProductDetails from './ProductDetails'
+
 
 const Home = () => {
   return (
@@ -10,6 +12,7 @@ const Home = () => {
      <HeroCarousel/>
      <ProductCard/>
      <Cards category={"rugged"} heading={"BestSeller"} />
+     <ProductDetails/>
     </>
   )
 }

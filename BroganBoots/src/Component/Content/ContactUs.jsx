@@ -23,7 +23,7 @@ const ContactUs = () => {
     e.preventDefault();
     console.log(data);
     try {
-      const contactResponse = await fetch("http://localhost:5055/api/contactusController", {
+      const contactResponse = await fetch("http://localhost:6060/api/contactusController", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

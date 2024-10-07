@@ -1,13 +1,9 @@
-const backendDomin = 'http://localhost:5055'
+const backendDomin = 'http://localhost:6060'
 
 
 const SummaryApi = {
     logout_user : {
         url : `${backendDomin}/api/userLogout`,
-        method : "get"
-      },
-      categoryProduct : {
-        url : `${backendDomin}/api/category`,
         method : "get"
       },
       createContact : {
@@ -37,6 +33,12 @@ const SummaryApi = {
       addtoCart : {
         url : `${backendDomin}/api/addtoCart`,
         method : 'get'
+      productDetails : {
+        url : `${backendDomin}/api/product-details`,
+        method : 'post'
+      },
+      categoryProduct : {
+        url : `${backendDomin}/api/get-categoryProduct`,
       },
 }
 

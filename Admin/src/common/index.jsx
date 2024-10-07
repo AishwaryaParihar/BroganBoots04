@@ -1,5 +1,7 @@
 
-const backendDomin = 'http://localhost:5055'
+// const backendDomin = 'http://localhost:5055'
+const backendDomin = 'http://localhost:6060';
+
 
 const SummaryApi = {
   signUP: {
@@ -27,7 +29,7 @@ const SummaryApi = {
     method : "post"
   },
   uploadProduct : {
-    url : `${backendDomin}/api/upload-product`, //use
+    url : `${backendDomin}/api/uploadProduct`, //use
     method : "post"
   },
   allProduct : {
@@ -85,7 +87,11 @@ const SummaryApi = {
   contactusDetail:{
     url : `${backendDomin}/api/contact-details`,
     method: 'get'
-  }
+  },
+  login:{
+    url : `${backendDomin}/api/login`,   // login
+    method: 'post'
+  },
 };
 
 export default SummaryApi;
