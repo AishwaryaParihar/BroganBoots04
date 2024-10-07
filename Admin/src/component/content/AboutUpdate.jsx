@@ -15,7 +15,7 @@ const AboutUpdate = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/updateAbout", formData, {
+      const response = await axios.post("http://localhost:6060/api/updateAbout", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

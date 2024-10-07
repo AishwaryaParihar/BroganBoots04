@@ -3,12 +3,9 @@ const router = express.Router();
 const getCategoryProduct = require("../controller/categoryProduct");
 const contactusController = require("../controller/contactus")
 const searchProduct =require('../controller/searchProduct')
-<<<<<<< HEAD
 const getProductDetails = require("../controller/getProductDetails");
 const addToCartController =require('../controller/addToCartController');
-=======
 const aboutController =require('../controller/aboutController')
-const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 
@@ -23,7 +20,6 @@ const storage = multer.diskStorage({
   });
   
   const upload = multer({ storage: storage });
->>>>>>> 03bece82fc4fe6fe8f39a7b955e875e8b676e3e0
 
 
 
@@ -56,7 +52,7 @@ router.get("/category", getCategoryProduct)
 router.post("/contactusController",contactusController)
 router.get("/search", searchProduct);
 
-// login
+// loginghfh
 router.post("/login", LoginController);
 
 
