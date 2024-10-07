@@ -9,6 +9,7 @@ import { Refund } from "../Component/Content/Refund";
 import { ShipmentPolicy } from "../Component/Content/ShipmentPolicy";
 import TermsAndConditions from "../Component/Content/TermsAndConditions";
 import { CancelProces } from "../Component/Content/CancelProces";
+import SearchProduct from "../Component/Content/SearchProduct";
 
 export const router = createBrowserRouter([
     {
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
             {
                 path:"cancel-policy",
                 element: <CancelProces/>
+            },
+            {
+                path:"searchProduct",
+                element: <SearchProduct/>
             },
         ]
     }

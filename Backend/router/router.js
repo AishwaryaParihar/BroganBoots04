@@ -1,18 +1,14 @@
 const express = require("express");
 const getCategoryProduct = require("../controller/categoryProduct");
 const contactusController = require("../controller/contactus")
-// const contactUsControllers =require('../controller/contactUsControllers')
+const searchProduct =require('../controller/searchProduct')
 const router = express.Router();
 
 router.get("/category", getCategoryProduct)
 
 //contact Form routes
 router.post("/contactusController",contactusController)
-
-
-// router.post("/createContact",contactUsControllers.createContact)
-// router.get("/getContacts",contactUsControllers.getContacts)
-// router.get("/getContactById",contactUsControllers.getContactById)
+router.get("/search", searchProduct);
 
 
 const countAddToCartProduct = require("../controller/countAddToCartProduct");
@@ -34,6 +30,10 @@ router.post("/upload-product", UploadProductController);
 router.post("/update-product", updateProductController);
 router.get("/get-product", getProductController);
 
+
+
+const addToCartController =require('../controller/addToCartController')
+router.post("/addtoCart", addToCartController);
 module.exports = router;
 
 

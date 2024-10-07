@@ -30,6 +30,14 @@ const SummaryApi = {
         url : `${backendDomin}/api/category-product`,
         method : 'post'
       },
+      searchProduct : {
+        url : `${backendDomin}/api/search`,
+        method : 'get'
+      },
+      addtoCart : {
+        url : `${backendDomin}/api/addtoCart`,
+        method : 'get'
+      },
 }
 
 

@@ -160,7 +160,7 @@ const ContactUs = () => {
             </form>
           </div>
         </div>
-      </div>
+      </div>  
       <Map />
     </div>
   );

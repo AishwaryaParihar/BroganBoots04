@@ -25,6 +25,9 @@ const Cards = ({ category, heading }) => {
     setData(categoryProduct?.data);
   };
 
+
+ 
+
   useEffect(() => {
     fetchData();
   }, []);
