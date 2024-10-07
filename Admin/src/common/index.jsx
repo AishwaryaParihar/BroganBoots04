@@ -1,5 +1,5 @@
 
-const backendDomin = 'http://localhost:8081'
+const backendDomin = 'http://localhost:5055'
 
 const SummaryApi = {
   signUP: {
@@ -27,15 +27,15 @@ const SummaryApi = {
     method : "post"
   },
   uploadProduct : {
-    url : `${backendDomin}/api/upload-product`,
+    url : `${backendDomin}/api/upload-product`, //use
     method : "post"
   },
   allProduct : {
-    url : `${backendDomin}/api/get-product`,
+    url : `${backendDomin}/api/get-product`, //use
     method : 'get'
   },
   updateProduct : {
-    url : `${backendDomin}/api/update-product`,
+    url : `${backendDomin}/api/update-product`,  // use
     method : 'post'
   },
   categoryProduct : {
