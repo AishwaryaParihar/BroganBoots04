@@ -68,7 +68,7 @@ const Cards = ({ category, heading }) => {
                       <img
                         src={product.productImage[0]}
                         alt="Product"
-                        className="w-full h-48 object-cover"
+                        className="w-48 h-48 object-cover"
                       />
                     </div>
                     <span className="absolute top-0 left-0 bg-yellow-500 text-black px-2 py-1 uppercase text-xs font-bold">
@@ -89,11 +89,11 @@ const Cards = ({ category, heading }) => {
                     </div>
                     <p className="text-primary text-lg font-semibold mt-2">
                       <del className="text-gray-500">
-                        <i className="fas fa-rupee-sign text-sm"></i>
+                     
                         {displayINRCurrency(product.price)} {/* INR formatted price */}
                       </del>{" "}
                       From{" "}
-                      <i className="fas fa-rupee-sign text-sm"></i>
+                  
                       {displayINRCurrency(product.sellingPrice)} {/* INR formatted selling price */}
                     </p>
                     <button

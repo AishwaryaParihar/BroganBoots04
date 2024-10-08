@@ -34,7 +34,14 @@ const Category = () => {
       }),
     [categoryProduct]
   );
-
+ // Function to capitalize words
+ const capitalizeWords = (str) => {
+  return str
+    .toLowerCase()
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
   return (
     <div className="container-fluid">
       <div className="">
@@ -55,8 +62,8 @@ const Category = () => {
                         className="w-40 h-40 object-cover rounded-full"
                       />
                     </div>
-                    <div className="py-2 text-capitalize text-lg">
-                      {product.category}
+                    <div className="py-2 text-uppercase font-semibold text-lg">
+                      {capitalizeWords(product.category)} {/* Capitalize category name */}
                     </div>
                   </Link>
                 </div>
@@ -66,7 +73,7 @@ const Category = () => {
                   <div className="category-img-box">
                     <img src={allCategory} alt="" className="w-40 h-40 object-cover rounded-full" />
                   </div>
-                  <div className="pt-2 text-capitalize text-lg">All categories</div>
+                  <div className="pt-2 text-capitalize text-lg font-semibold">All categories</div>
                 </Link>
               </div>
             </div>

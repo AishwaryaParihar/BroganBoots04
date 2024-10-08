@@ -1,9 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import logo from '../../assets/logo.jpg';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaSearch, FaCartPlus } from 'react-icons/fa';
 import Cart from '../Content/Cart';
 import Context from '../../context';
+import SummaryApi from '../../common/SummaryApi';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +31,36 @@ const Navbar = () => {
       navigate('/searchProduct');
     }
   };
+  const [categoryProduct, setCategoryProduct] = useState([]);
+  const [loading, setLoading] = useState(false);
 
+  const categoryLoading = new Array(13).fill(null);
+
+  const fetchCategoryProduct = async () => {
+    setLoading(true);
+    const response = await fetch(SummaryApi.categoryProduct.url);
+    const dataResponse = await response.json();
+    setLoading(false);
+    setCategoryProduct(dataResponse.data);
+  };
+
+  useEffect(() => {
+    fetchCategoryProduct();
+  }, []);
+
+  const allCategoriesquarry = useMemo(
+    () =>
+      categoryProduct.map((prod, i) => {
+        if (i !== 0) {
+          return "&category=" + prod.category + "&";
+        } else if (i === categoryProduct.length - 1) {
+          return "&category=" + prod.category;
+        } else {
+          return "category=" + prod.category + "&";
+        }
+      }),
+    [categoryProduct]
+  );
   return (
     <nav className="border-b border-gray-200 bg-white shadow-sm dark:bg-gray-800 dark:border-gray-700 px-20">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto font-bold p-4">
@@ -93,7 +123,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                to="/shop"
+               to={`/product-category?${allCategoriesquarry}`}
                 className="block py-2 px-3 text-white bg-gray-700 rounded dark:bg-gray-600 md:text-gray-900 md:bg-transparent dark:md:text-black transition duration-200 hover:underline"
                 aria-current="page"
               >
