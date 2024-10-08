@@ -114,9 +114,10 @@ const Navbar = () => {
                 <FaSearch className="w-5 h-5" />
               </button>
             </div>
+            <Link to={"/cart"}>
             <button
-              onClick={toggleCartOffcanvas}
-              className="relative text-3xl mt-1 text-gray-900"
+
+              className=" text-3xl mt-1 text-gray-900"
             >
               <FaCartPlus />
               {/* Add a badge for item count */}
@@ -124,6 +125,7 @@ const Navbar = () => {
               {context?.cartProductCount}
               </span>
             </button>
+            </Link>
           </div>
         </div>
 
