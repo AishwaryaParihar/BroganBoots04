@@ -1,6 +1,8 @@
 // AdminContactList.jsx
 import React, { useEffect, useState } from "react";
+import SummaryApi from "../../common/index";
 import { toast } from "react-toastify";
+import ClipLoader from "react-spinners/ClipLoader"; // For loading spinner
 
 const ContactList = () => {
   const [contacts, setContacts] = useState([]);
@@ -9,7 +11,7 @@ const ContactList = () => {
   useEffect(() => {
     const fetchContacts = async () => {
       try {
-        const response = await fetch("http://localhost:5055/api/contactusController/contactus");
+        const response = await fetch(SummaryApi.contactDetailDisplay.url);
         const data = await response.json();
         if (data.success) {
           setContacts(data.data);
@@ -28,34 +30,57 @@ const ContactList = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <ClipLoader size={50} color={"#4A90E2"} loading={loading} />
+      </div>
+    );
   }
 
   return (
-    <div className="container mx-auto py-10">
-      <h2 className="text-3xl font-semibold text-gray-800 mb-6">Contact Messages</h2>
-      <table className="min-w-full border border-gray-300">
-        <thead>
-          <tr>
-          <th className="border border-gray-300 p-4">S. no</th>
-            <th className="border border-gray-300 p-4">Name</th>
-            <th className="border border-gray-300 p-4">Mobile</th>
-            <th className="border border-gray-300 p-4">Email</th>
-            <th className="border border-gray-300 p-4">Message</th>
-          </tr>
-        </thead>
-        <tbody>
-          {contacts.map((contact,index) => (
-            <tr key={contact._id}>
-              <td className="border border-gray-300 p-4">{index + 1}</td>
-              <td className="border border-gray-300 p-4">{contact.name}</td>
-              <td className="border border-gray-300 p-4">{contact.mobile}</td>
-              <td className="border border-gray-300 p-4">{contact.email}</td>
-              <td className="border border-gray-300 p-4">{contact.msg}</td>
+    <div className="container mx-auto py-10 px-4">
+      <h2 className="text-4xl font-semibold text-gray-800 mb-8 text-center">
+        Contact Messages
+      </h2>
+      <div className="overflow-x-auto">
+        <table className="min-w-full table-auto bg-white shadow-md rounded-lg overflow-hidden">
+          <thead>
+            <tr className="bg-blue-500 text-left text-white">
+              <th className="p-4 text-sm font-semibold uppercase tracking-wide text-white">S. No</th>
+              <th className="p-4 text-sm font-semibold uppercase tracking-wide text-white">Name</th>
+              <th className="p-4 text-sm font-semibold uppercase tracking-wide text-white">Mobile</th>
+              <th className="p-4 text-sm font-semibold uppercase tracking-wide text-white">Email</th>
+              <th className="p-4 text-sm font-semibold uppercase tracking-wide text-white">Message</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {contacts.map((contact, index) => (
+              <tr
+                key={contact._id}
+                className={`${
+                  index % 2 === 0 ? "bg-gray-50" : "bg-white"
+                } hover:bg-blue-50 transition duration-200 ease-in-out`}
+              >
+                <td className="border-b border-gray-300 p-4 text-gray-700">
+                  {index + 1}
+                </td>
+                <td className="border-b border-gray-300 p-4 text-gray-800">
+                  {contact.name}
+                </td>
+                <td className="border-b border-gray-300 p-4 text-gray-700">
+                  {contact.mobile}
+                </td>
+                <td className="border-b border-gray-300 p-4 text-gray-700">
+                  {contact.email}
+                </td>
+                <td className="border-b border-gray-300 p-4 text-gray-600">
+                  {contact.msg}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

@@ -5,7 +5,7 @@ const contactusController = require("../controller/contactus")
 const searchProduct =require('../controller/searchProduct')
 const getProductDetails = require("../controller/getProductDetails");
 const addToCartController =require('../controller/addToCartController');
-
+const contactDetailDisplay = require("../controller/contactusDetail")
 const multer = require('multer');
 const path = require('path');
 
@@ -50,6 +50,7 @@ router.get("/category", getCategoryProduct)
 
 //contact Form routes
 router.post("/contactusController",contactusController)
+router.get("/contactDetailDisplay",contactDetailDisplay)
 router.get("/search", searchProduct);
 
 // loginghfh
