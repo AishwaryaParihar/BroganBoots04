@@ -82,12 +82,22 @@ const Navbar = () => {
                 Home
               </Link>
             </li>
+
             <li>
               <Link
                 to="/about"
                 className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 md:dark:text-white md:hover:bg-transparent dark:hover:bg-gray-700 dark:hover:text-white transition duration-200 hover:underline"
               >
                 About
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/shop"
+                className="block py-2 px-3 text-white bg-gray-700 rounded dark:bg-gray-600 md:text-gray-900 md:bg-transparent dark:md:text-black transition duration-200 hover:underline"
+                aria-current="page"
+              >
+                Shop
               </Link>
             </li>
             <li>
@@ -121,33 +131,32 @@ const Navbar = () => {
               <FaCartPlus />
               {/* Add a badge for item count */}
               <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full px-1">
-              {context?.cartProductCount}
+                {context?.cartProductCount}
               </span>
             </button>
           </div>
         </div>
 
         <div className={`md:hidden w-full ${isOpen ? 'block' : 'hidden'}`}>
-  <div className="flex items-center p-2 relative">
-    <input
-      onChange={handleSearch}
-      type="text"
-      placeholder="Search..."
-      className="w-full p-3 pl-10 pr-10 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 transition duration-200"
-    />
-    <button className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-300">
-      <FaSearch className="w-5 h-5" />
-    </button>
+          <div className="flex items-center p-2 relative">
+            <input
+              onChange={handleSearch}
+              type="text"
+              placeholder="Search..."
+              className="w-full p-3 pl-10 pr-10 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 transition duration-200"
+            />
+            <button className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-300">
+              <FaSearch className="w-5 h-5" />
+            </button>
 
-    <button
-      onClick={toggleCartOffcanvas}
-      className="absolute right-3 top-1/2 transform -translate-y-1/2"
-    >
-      <FaCartPlus className="text-3xl text-gray-900 cursor-pointer" />
-    </button>
-  </div>
-</div>
-
+            <button
+              onClick={toggleCartOffcanvas}
+              className="absolute right-3 top-1/2 transform -translate-y-1/2"
+            >
+              <FaCartPlus className="text-3xl text-gray-900 cursor-pointer" />
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* Optional Cart Offcanvas Component */}

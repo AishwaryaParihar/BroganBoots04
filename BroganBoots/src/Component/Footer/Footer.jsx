@@ -21,12 +21,12 @@ function Footer() {
           <div className="lg:ms-20">
             <h3 className="text-2xl font-semibold mb-4">Our Category</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:underline">Rugged</a></li>
-              <li><a href="/about-us.html" className="hover:underline">Suede</a></li>
-              <li><a href="/ourProducts.html" className="hover:underline">Chelsea</a></li>
-              <li><a href="/globalPresence.html" className="hover:underline">Lace-up</a></li>
-              <li><a href="/CYD.html" className="hover:underline">All Styles</a></li>
-              <li><a href="/contactUs.html" className="hover:underline">Stomper</a></li>
+              <li><a href="/" className="hover:underline">Rugged</a></li>
+              <li><a href="/" className="hover:underline">Suede</a></li>
+              <li><a href="/" className="hover:underline">Chelsea</a></li>
+              <li><a href="/" className="hover:underline">Lace-up</a></li>
+              <li><a href="/" className="hover:underline">All Styles</a></li>
+              <li><a href="/" className="hover:underline">Stomper</a></li>
             </ul>
           </div>
 
@@ -34,8 +34,8 @@ function Footer() {
           <div>
             <h3 className="text-2xl font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:underline">About Us</a></li>
-              <li><a href="/about-us.html" className="hover:underline">Contact Us</a></li>
+              <li><a href="about" className="hover:underline">About Us</a></li>
+              <li><a href="contactus" className="hover:underline">Contact Us</a></li>
               <li><a href="/terms-conditions" className="hover:underline">Terms & Conditions</a></li>
               <li><a href="/privacy" className="hover:underline">Privacy Policy</a></li>
               <li><a href="/cancel-policy" className="hover:underline">Cancellation Policy</a></li>
