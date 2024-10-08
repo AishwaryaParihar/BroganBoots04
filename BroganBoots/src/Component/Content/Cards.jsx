@@ -3,9 +3,9 @@ import fetchCategoryWiseProduct from "../../helper/fetchCategoryWiseProduct";
 import { Link } from "react-router-dom";
 import Context from "../../context";
 import addToCart from "../../helper/addToCart"; 
-import img from "../../assets/EXTRALARGE.jpg";
 import displayINRCurrency from '../../helper/displayCurrency'; // Import currency helper
-
+import { toast } from 'react-toastify'; // Import toastify
+import 'react-toastify/dist/ReactToastify.css'; // Toastify styles
 
 const Cards = ({ category, heading }) => {
   const [data, setData] = useState([]);
@@ -15,15 +15,31 @@ const Cards = ({ category, heading }) => {
   const { fetchUserAddtoCart } = useContext(Context);
 
   const handleAddToCart = async (e, id) => {
-    await addToCart(e, id);
-    fetchUserAddtoCart();
+    try {
+      await addToCart(e, id);
+      fetchUserAddtoCart();
+      toast.success("Product added to cart successfully!", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    } catch (error) {
+      toast.error("Failed to add product to cart!", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
   };
 
   const fetchData = async () => {
-    setLoading(true);
-    const categoryProduct = await fetchCategoryWiseProduct(category);
-    setLoading(false);
-    setData(categoryProduct?.data);
+    try {
+      setLoading(true);
+      const categoryProduct = await fetchCategoryWiseProduct(category);
+      setData(categoryProduct?.data);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      toast.error("Failed to fetch products!", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
   };
 
   useEffect(() => {
@@ -51,7 +67,7 @@ const Cards = ({ category, heading }) => {
                     <div className="overflow-hidden rounded-md">
                       <img
                         src={product.productImage[0]}
-                        alt=""
+                        alt="Product"
                         className="w-full h-48 object-cover"
                       />
                     </div>

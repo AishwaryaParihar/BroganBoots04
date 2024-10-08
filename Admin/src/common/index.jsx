@@ -96,7 +96,10 @@ const SummaryApi = {
     url : `${backendDomin}/api/delete-product`, 
     method: 'delete'
   },
-  
+  contactDetailDisplay: {
+    url : `${backendDomin}/api/contactDetailDisplay`, 
+    method: 'get'
+  },
 };
 
 export default SummaryApi;
