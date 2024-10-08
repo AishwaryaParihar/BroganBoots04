@@ -30,7 +30,7 @@ const ProductCard = ({ loading, data = [] }) => {
                     ))
                 ) : (
                     data.map((product, index) => (
-                        <div key={index} className="w-full md:w-1/3 px-2 mb-4">
+                        <div key={index} className="w-full md:w-1/3 px-2 mb-4 h-full">
                             <div className="border-0 rounded shadow-lg">
                                 <Link to={"product/" + product?._id} className="block">
                                     <div className="relative">
@@ -60,11 +60,11 @@ const ProductCard = ({ loading, data = [] }) => {
                                         </div>
                                         <p className="text-primary text-lg py-2">
                                             <del className="text-gray-500">
-                                            <FaRupeeSign />
+                                            
                                                 {displayINRCurrency(product?.price)}
                                             </del>
                                             {"  "}From
-                                            <FaRupeeSign />
+                                         
                                             {displayINRCurrency(product?.sellingPrice)}
                                         </p>
                                         <button className="w-full bg-[#205F83] text-white rounded py-2 uppercase" onClick={(e) => handleAddToCart(e, product?._id)}>

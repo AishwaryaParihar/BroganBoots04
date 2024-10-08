@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import productCategory from '../../helper/ProductCategory'
 import SummaryApi from '../../common/SummaryApi'
 import Cards from './Cards'
+import ProductCard from './ProductCards'
 
 
 
@@ -95,8 +96,8 @@ const KindOfProduct = () => {
     }, [sortBy])
 
     return (
-        <div className='container mx-auto pt-5'>
-            <div className="mt-5"></div>
+        <div className=' '>
+      
 
             {/* Desktop version */}
             <div className='flex flex-col md:flex-row pt-3'>
@@ -145,10 +146,12 @@ const KindOfProduct = () => {
                     <div className=''>
                         {
                             data.length !== 0 && !loading && (
-                                <Cards data={data} loading={loading} />
+                                
+                                <ProductCard data={data} loading={loading}/>
                             )
                         }
                     </div>
+                    
                 </div>
             </div>
         </div>
