@@ -44,6 +44,7 @@ const SummaryApi = {
         url : `${backendDomin}/api/filter-product`,
         method : 'post'
       },
+      
 }
 
 
