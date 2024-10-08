@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Card from '../Content/Cards'; 
 import SummaryApi from '../../common/SummaryApi'; 
+import Cards from '../Content/Cards';
+import ProductCard from './ProductCards';
 
 const SearchProduct = () => {
   const query = useLocation();
@@ -29,7 +31,7 @@ const SearchProduct = () => {
 
       {data.length === 0 && !loading && <p className='bg-white text-lg text-center p-4'>No Data Found...</p>}
 
-      {data.length !== 0 && !loading && <VerticalCard loading={loading} data={data} />}
+      {data.length !== 0 && !loading && <ProductCard loading={loading} data={data} />}
     </div>
   );
 };

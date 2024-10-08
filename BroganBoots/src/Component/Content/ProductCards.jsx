@@ -64,7 +64,7 @@ const ProductCard = ({ loading, data = [] }) => {
                                             {"  "}From
                                             {displayINRCurrency(product?.sellingPrice)}
                                         </p>
-                                        <button className="w-full bg-[#205F83] text-white rounded py-2 uppercase" onClick={(e) => handleAddToCart(e, product?._id)}>
+                                        <button className="w-full bg-[#205F83] hover:bg-[#2087c2] text-white rounded py-2 uppercase" onClick={(e) => handleAddToCart(e, product?._id)}>
                                             Add to Cart
                                         </button>
                                     </div>

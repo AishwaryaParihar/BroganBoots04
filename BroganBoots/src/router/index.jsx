@@ -56,7 +56,7 @@ export const router = createBrowserRouter([
         element: <CancelProces />,
       },
       {
-        path: 'searchProduct',
+        path: 'search',
         element: <SearchProduct />,
       },
       {

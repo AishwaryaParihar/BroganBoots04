@@ -28,7 +28,7 @@ const Navbar = () => {
     if (value) {
       navigate(`/search?q=${value}`);
     } else {
-      navigate('/searchProduct');
+      navigate('/search');
     }
   };
   const [categoryProduct, setCategoryProduct] = useState([]);
@@ -52,11 +52,11 @@ const Navbar = () => {
     () =>
       categoryProduct.map((prod, i) => {
         if (i !== 0) {
-          return "&category=" + prod.category + "&";
+          return '&category=' + prod.category + '&';
         } else if (i === categoryProduct.length - 1) {
-          return "&category=" + prod.category;
+          return '&category=' + prod.category;
         } else {
-          return "category=" + prod.category + "&";
+          return 'category=' + prod.category + '&';
         }
       }),
     [categoryProduct]
@@ -123,7 +123,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-               to={`/product-category?${allCategoriesquarry}`}
+                to={`/product-category?${allCategoriesquarry}`}
                 className="block py-2 px-3 text-white bg-gray-700 rounded dark:bg-gray-600 md:text-gray-900 md:bg-transparent dark:md:text-black transition duration-200 hover:underline"
                 aria-current="page"
               >
@@ -143,10 +143,11 @@ const Navbar = () => {
 
         <div className="hidden md:block relative">
           <div className="flex gap-3">
+            <form action="" role='search'>
             <div className="relative">
               <input
                 onChange={handleSearch}
-                type="text"
+                type="search"
                 placeholder="Search..."
                 className="p-3 pl-10 pr-10 w-full text-sm text-gray-900 bg-gray-100 rounded-full border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-black focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500 transition duration-200"
               />
@@ -154,17 +155,15 @@ const Navbar = () => {
                 <FaSearch className="w-5 h-5" />
               </button>
             </div>
-            <Link to={"/cart"}>
-            <button
-
-              className=" text-3xl mt-1 text-gray-900"
-            >
-              <FaCartPlus />
-              {/* Add a badge for item count */}
-              <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full px-1">
-                {context?.cartProductCount}
-              </span>
-            </button>
+            </form>
+            <Link to={'/cart'}>
+              <button className=" text-3xl mt-1 text-gray-900">
+                <FaCartPlus />
+                {/* Add a badge for item count */}
+                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full px-1">
+                  {context?.cartProductCount}
+                </span>
+              </button>
             </Link>
           </div>
         </div>
