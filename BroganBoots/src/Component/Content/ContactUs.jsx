@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Map from "./Map";
 import { toast } from "react-toastify";
-
+import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa"; // Importing specific icons
 
 const ContactUs = () => {
   const [data, setData] = useState({
@@ -30,13 +30,13 @@ const ContactUs = () => {
         },
         body: JSON.stringify(data),
       });
-  
+
       if (!contactResponse.ok) {
         throw new Error("Network response was not ok");
       }
-  
+
       const dataApi = await contactResponse.json();
-  
+
       if (dataApi.success) {
         toast.success(dataApi.message);
         setData({
@@ -53,13 +53,12 @@ const ContactUs = () => {
       toast.error("Failed to submit the form. Please try again later.");
     }
   };
-  
 
   return (
-    <div className="py-10">
-      <div className="container mx-auto">
+    <div className="pt-10 bg-gray-50">
+      <div className="container mx-auto px-20 mb-10">
         <div className="text-center mb-8">
-          <h4 className="text-2xl font-semibold underline decoration-primary">
+          <h4 className="text-4xl lg:text-5xl font-bold leading-tight text-gray-900">
             Contact <span className="text-primary">Us</span>
           </h4>
         </div>
@@ -69,39 +68,46 @@ const ContactUs = () => {
             <h2 className="text-3xl font-semibold text-gray-800">
               Keep in <span className="text-primary">Touch</span>
             </h2>
-            <p>
-              Give us a call or drop by anytime, we endeavour to answer all
-              enquiries within 24 hours on business days. We will be happy
+            <p className="text-gray-600">
+              Give us a call or drop by anytime, we endeavor to answer all
+              inquiries within 24 hours on business days. We will be happy
               to answer your questions.
             </p>
 
             <div className="space-y-4">
-              <div>
-                <h4 className="font-semibold text-gray-700">ADDRESS</h4>
-                <p>
-                  <i className="fas fa-map-marker-alt"></i> 63-B, Pocket-B, DDA Flats, 
-                  Hari Nagar, Near Tilak Nagar Metro Station, New Delhi – 110064
-                </p>
+              <div className="flex items-start">
+                <FaMapMarkerAlt className="text-primary mr-2 mt-1" />
+                <div>
+                  <h4 className="font-semibold text-gray-700">Address</h4>
+                  <p className="text-gray-600">
+                    63-B, Pocket-B, DDA Flats, Hari Nagar, Near Tilak Nagar Metro Station, New Delhi – 110064
+                  </p>
+                </div>
               </div>
 
-              <div>
-                <h4 className="font-semibold text-gray-700">CONTACT</h4>
-                <p>
-                  <i className="fas fa-phone"></i> +91 76111 89837
-                </p>
+              <div className="flex items-start">
+                <FaPhone className="text-primary mr-2 mt-1" />
+                <div>
+                  <h4 className="font-semibold text-gray-700">Contact</h4>
+                  <p className="text-gray-600">+91 76111 89837</p>
+                </div>
               </div>
 
-              <div>
-                <h4 className="font-semibold text-gray-700">EMAIL</h4>
-                <p>
-                  <i className="fas fa-envelope"></i> 
-                  <a href="mailto:broganboots19@gmail.com" className="text-primary underline">broganboots19@gmail.com</a>
-                </p>
+              <div className="flex items-start">
+                <FaEnvelope className="text-primary mr-2 mt-1" />
+                <div>
+                  <h4 className="font-semibold text-gray-700">Email</h4>
+                  <p className="text-gray-600">
+                    <a href="mailto:broganboots19@gmail.com" className="text-primary underline">
+                      broganboots19@gmail.com
+                    </a>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="lg:w-1/2 bg-white p-8 shadow-md rounded-md text-left">
+          <div className="lg:w-1/2 bg-white p-8 shadow-md rounded-md text-left border border-gray-300">
             <h2 className="text-3xl font-semibold text-gray-800 mb-6">
               Send a <span className="text-primary">Message</span>
             </h2>
@@ -110,7 +116,7 @@ const ContactUs = () => {
                 <div className="form-group">
                   <input
                     type="text"
-                    className="w-full border border-gray-300 p-3 rounded-md"
+                    className="w-full border border-gray-300 p-3 rounded-md transition duration-200 focus:outline-none focus:ring focus:ring-primary"
                     placeholder="Your Name *"
                     name="name"
                     value={data.name}
@@ -121,7 +127,7 @@ const ContactUs = () => {
                 <div className="form-group">
                   <input
                     type="text"
-                    className="w-full border border-gray-300 p-3 rounded-md"
+                    className="w-full border border-gray-300 p-3 rounded-md transition duration-200 focus:outline-none focus:ring focus:ring-primary"
                     placeholder="Mobile Number *"
                     name="mobile"
                     value={data.mobile}
@@ -132,7 +138,7 @@ const ContactUs = () => {
                 <div className="form-group col-span-2">
                   <input
                     type="email"
-                    className="w-full border border-gray-300 p-3 rounded-md"
+                    className="w-full border border-gray-300 p-3 rounded-md transition duration-200 focus:outline-none focus:ring focus:ring-primary"
                     placeholder="Email *"
                     name="email"
                     value={data.email}
@@ -143,7 +149,7 @@ const ContactUs = () => {
                 <div className="form-group col-span-2">
                   <textarea
                     name="msg"
-                    className="w-full border border-gray-300 p-3 rounded-md"
+                    className="w-full border border-gray-300 p-3 rounded-md transition duration-200 focus:outline-none focus:ring focus:ring-primary"
                     placeholder="Message"
                     rows="4"
                     value={data.msg}
@@ -152,7 +158,10 @@ const ContactUs = () => {
                   ></textarea>
                 </div>
                 <div className="form-group col-span-2 text-center">
-                  <button type="submit" className="bg-blue-500 text-white py-3 px-6 rounded-md hover:bg-primary-dark transition">
+                  <button 
+                    type="submit" 
+                    className="bg-blue-500 text-white py-3 px-6 rounded-md hover:bg-primary-dark transition duration-200"
+                  >
                     Submit
                   </button>
                 </div>

@@ -32,8 +32,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="border-b border-gray-200 bg-white shadow-sm dark:bg-gray-800 dark:border-gray-700">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <nav className="border-b border-gray-200 bg-white shadow-sm dark:bg-gray-800 dark:border-gray-700 px-20">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto font-bold p-4">
         <Link
           to="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -76,7 +76,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/"
-                className="block py-2 px-3 text-white bg-gray-700 rounded dark:bg-gray-600 md:text-gray-900 md:bg-transparent dark:md:text-black transition duration-200 hover:bg-gray-600"
+                className="block py-2 px-3 text-white bg-gray-700 rounded dark:bg-gray-600 md:text-gray-900 md:bg-transparent dark:md:text-black transition duration-200 hover:underline"
                 aria-current="page"
               >
                 Home
@@ -85,7 +85,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/about"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 md:dark:text-white md:hover:bg-transparent dark:hover:bg-gray-700 dark:hover:text-white transition duration-200"
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 md:dark:text-white md:hover:bg-transparent dark:hover:bg-gray-700 dark:hover:text-white transition duration-200 hover:underline"
               >
                 About
               </Link>
@@ -93,7 +93,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/contactus"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 md:dark:text-white md:hover:bg-transparent dark:hover:bg-gray-700 dark:hover:text-white transition duration-200"
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 md:dark:text-white md:hover:bg-transparent dark:hover:bg-gray-700 dark:hover:text-white transition duration-200 hover:underline"
               >
                 Contact us
               </Link>

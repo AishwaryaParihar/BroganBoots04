@@ -100,7 +100,7 @@ const Cards = ({ category, heading }) => {
                       className="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
                       onClick={(e) => handleAddToCart(e, product?._id)}
                     >
-                      View Product
+                      Add to Cart
                     </button>
                   </div>
                 </Link>
