@@ -28,11 +28,7 @@ const router = createBrowserRouter([
                         element: <ContactList />  // Ensure this component exists
 
                     },
-                    {
-                        path: "aboutUpdate",
-                        element: < AboutUpdate/>  
-
-                    }
+                   
                 ]
             }
         ]
