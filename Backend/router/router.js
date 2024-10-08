@@ -30,7 +30,7 @@ const UploadProductController = require("../controller/uploadProduct");
 const LoginController = require("../controller/login/LoginController");
 const filterProductController = require("../controller/filterProducts");
 const deleteProductController = require("../controller/deleteProductController");
-
+const { addToCartViewProduct, updateAddToCartProduct, deleteAddToCartProduct } = require("../controller/getAddToCart");
 
 
 router.get("/get-categoryProduct", getCategoryProduct)
@@ -62,8 +62,10 @@ router.post("/addtoCart", addToCartController);
 
 router.post('/filter-product',filterProductController)
 
-
-
+// add to cart 
+router.get('/view-card-product', addToCartViewProduct)
+router.post('/update-cart-product', updateAddToCartProduct)
+router.post('/delete-cart-product', deleteAddToCartProduct)
 
 module.exports = router;
 
